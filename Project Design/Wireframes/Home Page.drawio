@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-04-09T20:33:22.758Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="G0XSzCNPWUxBP0duS73n" version="21.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2023-04-09T20:42:17.039Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="EwD9-7Tl0bF8xt2ZQTNF" version="21.1.5" type="github">
   <diagram name="Page-1" id="f1b7ffb7-ca1e-a977-7cf5-a751b3c06c05">
-    <mxGraphModel dx="1036" dy="535" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="#FFFFFF" math="0" shadow="0">
+    <mxGraphModel dx="1036" dy="477" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="769" background="#FFFFFF" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -129,6 +129,9 @@
         </mxCell>
         <mxCell id="cVJXGdQeSUcvY2u7gv_X-102" value="Tags: Tag 1, Tag 2, Tag3" style="text;spacingTop=-5;fontSize=14;align=center;fontColor=#67AB9F;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="108" y="1204" width="162" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cVJXGdQeSUcvY2u7gv_X-105" value="&lt;b&gt;&lt;i&gt;Copyrights by Team #4&lt;/i&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="74" y="1334" width="672" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
