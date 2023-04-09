@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-04-09T20:42:17.039Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="EwD9-7Tl0bF8xt2ZQTNF" version="21.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2023-04-09T20:54:21.399Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="DUTmne_QCbjicLnhqNGi" version="21.1.5" type="github">
   <diagram name="Page-1" id="f1b7ffb7-ca1e-a977-7cf5-a751b3c06c05">
-    <mxGraphModel dx="1036" dy="477" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="769" background="#FFFFFF" math="0" shadow="0">
+    <mxGraphModel dx="1036" dy="535" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="769" background="#FFFFFF" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -10,7 +10,7 @@
         <mxCell id="cVJXGdQeSUcvY2u7gv_X-80" value="" style="rounded=1;labelBackgroundColor=none;labelBorderColor=none;noLabel=1;whiteSpace=wrap;html=1;glass=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
           <mxGeometry x="65" y="179" width="680" height="350" as="geometry" />
         </mxCell>
-        <mxCell id="2" value="Academify" style="text;spacingTop=-5;fontSize=28;fontStyle=3;align=center;horizontal=1;verticalAlign=middle;fontFamily=Comic Sans MS;fontColor=#49757A;" parent="1" vertex="1">
+        <mxCell id="2" value="Academify" style="text;spacingTop=-5;fontSize=28;fontStyle=3;align=center;horizontal=1;verticalAlign=middle;fontFamily=Georgia;fontColor=#49757B;" parent="1" vertex="1">
           <mxGeometry x="65" y="41.25" width="160" height="35" as="geometry" />
         </mxCell>
         <mxCell id="5" value="Home" style="text;spacingTop=-5;fontStyle=1;align=center;fontSize=18;fontColor=#2673BF;" parent="1" vertex="1">
