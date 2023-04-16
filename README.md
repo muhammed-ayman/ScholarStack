@@ -1,6 +1,6 @@
 # ScholarStack
 
-> [CIE 206] Database Management System @ Spring 2023 - UST-ZC
+> [CIE 206] Database Management System @ UST-ZC - Spring 2023
 
 .NET Core Social Media Web App that serves as an extension to Google Scholar for all researchers out there.
 
