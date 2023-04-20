@@ -1,5 +1,5 @@
 -- Create the database
--- CREATE DATABASE ScholarStack;
+CREATE DATABASE ScholarStack;
 
 -- Use the newly created database
 USE ScholarStack;
@@ -9,8 +9,8 @@ CREATE TABLE [User] (
   [id] INT PRIMARY KEY,
   [name] NVARCHAR(100) NOT NULL,
   [role] NVARCHAR(50) NOT NULL,
-  [google_scholar_id] NVARCHAR(100),
-  [email] NVARCHAR(100) NOT NULL,
+  [google_scholar_id] NVARCHAR(100) UNIQUE,
+  [email] NVARCHAR(100) UNIQUE NOT NULL,
   [password] NVARCHAR(50) NOT NULL,
   [timestamp] DATETIME NOT NULL DEFAULT GETDATE()
 );
@@ -27,8 +27,8 @@ CREATE TABLE [CommunityPost] (
 -- Create Resource table
 CREATE TABLE [Resource] (
   [id] INT PRIMARY KEY,
-  [hyper_link] NVARCHAR(500) NOT NULL,
-  [timestamp] DATETIME NOT NULL DEFAULT GETDATE(),
+  [hyper_link] NVARCHAR(500) UNIQUE NOT NULL,
+  [timestamp] DATETIME NOT NULL DEFAULT GETDATE()
 );
 
 -- Create ResourcePost table
@@ -50,7 +50,7 @@ CREATE TABLE [Textbook] (
 -- Create ResearchPaper table
 CREATE TABLE [ResearchPaper] (
   [id] INT PRIMARY KEY,
-  [DOI] NVARCHAR(100),
+  [DOI] NVARCHAR(100) UNIQUE NOT NULL,
   [citations] INT,
   [resource_id] INT NOT NULL,
   FOREIGN KEY ([resource_id]) REFERENCES [Resource]([id])
@@ -113,7 +113,7 @@ CREATE TABLE [ResourcePostComment] (
 -- Create CommunityPostAttachment table
 CREATE TABLE [CommunityPostAttachment] (
   [id] INT PRIMARY KEY,
-  [url] NVARCHAR(500) NOT NULL,
+  [url] NVARCHAR(500) NOT NULL UNIQUE,
   [community_post_id] INT NOT NULL,
   FOREIGN KEY ([community_post_id]) REFERENCES [CommunityPost]([id])
 );
