@@ -68,7 +68,9 @@ CREATE TABLE [Rating] (
   [resource_id] INT NOT NULL,
   [user_id] INT NOT NULL,
   [value] INT NOT NULL,
-  PRIMARY KEY ([resource_id], [user_id])
+  PRIMARY KEY ([resource_id], [user_id]),
+  FOREIGN KEY ([user_id]) REFERENCES [User]([id]),
+  FOREIGN KEY ([resource_id]) REFERENCES [Resource]([id])
 );
 
 -- Create Vote table
@@ -76,7 +78,9 @@ CREATE TABLE [Vote] (
   [user_id] INT NOT NULL,
   [community_post_id] INT NOT NULL,
   [vote_type] BIT NOT NULL,
-  PRIMARY KEY ([user_id], [community_post_id])
+  PRIMARY KEY ([user_id], [community_post_id]),
+  FOREIGN KEY ([user_id]) REFERENCES [User]([id]),
+  FOREIGN KEY ([community_post_id]) REFERENCES [CommunityPost]([id])
 );
 
 -- Create Ticket table
