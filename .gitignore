@@ -2,6 +2,8 @@
 .vs/
 bin/
 obj/
+ScholarStack.sln
+ScholarStack.csproj.user
 
 # Build results
 *.dll
