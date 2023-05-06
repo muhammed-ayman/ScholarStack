@@ -1,0 +1,24 @@
+# Visual Studio files
+.vs/
+bin/
+obj/
+
+# Build results
+*.dll
+*.exe
+*.pdb
+*.dll.config
+*.exe.config
+
+# .NET Core
+*.cache
+*.log
+*/bin/*
+*/obj/*
+*.user
+*.vscode
+
+# NuGet packages
+**/packages/*
+*.nuget.props
+*.nuget.targets
