@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="css/color.css">
     <link rel="stylesheet" href="css/responsive.css">
 
+    @RenderSection("Styles", required: false)
+
 </head>
 <body>
     <div class="theme-layout">
@@ -51,6 +53,11 @@
                             <li><a href="Support" title="">Support</a></li>
                         </ul>
                     </li>
+                    <li><span>Admin</span>
+                        <ul>
+                            <li><a href="/dashboard" title="">Dashboard</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
             <nav id="shoppingbag">
@@ -86,6 +93,11 @@
                             <li><a href="#" title="">About Us</a></li>
                             <li><a href="#" title="">FAQs</a></li>
                             <li><a href="Support" title="">Support</a></li>
+                        </ul>
+                    </li>
+                    <li><span>Admin</span>
+                        <ul>
+                            <li><a href="/dashboard" title="">Dashboard</a></li>
                         </ul>
                     </li>
                 </ul>

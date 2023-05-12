@@ -1,0 +1,475 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="css/dashboard/dashboard.css" />
+}
+
+<section>
+	<div class="gap gray-bg">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="row" id="page-contents">
+						<div class="col-lg-3">
+							<aside class="sidebar static">
+								<div class="widget">
+									<h4 class="widget-title">Statistics</h4>
+									<ul class="naves">
+										<li>
+											<i class="ti-clipboard"></i>
+											<a href="#" title="">Community Posts (1211)</a>
+										</li>
+										<li>
+											<i class="ti-clipboard"></i>
+											<a href="#" title="">Resource Posts (1210)</a>
+										</li>
+										<li>
+											<i class="ti-files"></i>
+											<a href="#" title="">Newly Registered Users (2000)</a>
+										</li>
+										<li>
+											<i class="ti-clipboard"></i>
+											<a href="#" title="">Managers (20)</a>
+										</li>
+										<li>
+											<i class="ti-clipboard"></i>
+											<a href="#" title="">Promoted Posts (50)</a>
+										</li>
+									</ul>
+								</div><!-- Shortcuts -->
+							</aside>
+						</div><!-- sidebar -->
+						<div class="col-lg-6">
+							<div class="central-meta">
+								<div class="card">
+									<div class="card-header">
+										<h5 class="card-title">Support Tickets</h5>
+									</div>
+									<div class="card-body">
+										<ul class="list-group">
+										<li class="list-group-item">
+											<div class="row">
+											<div class="col-md-8">
+												<h6 class="ticket-title">Issue with login page</h6>
+												<p class="ticket-description">From: researcher@@scholarstack.org <br>Users are unable to log in to their accounts</p>
+												<small class="text-muted">Opened on 05/12/2023 at 10:30 AM</small>
+											</div>
+											<div class="col-md-2">
+												<div class="dropdown">
+												<button class="btn btn-info dropdown-toggle" type="button" id="ticket1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													Open
+												</button>
+												<div class="dropdown-menu" aria-labelledby="ticket1">
+													<a class="dropdown-item" href="#">Open</a>
+													<a class="dropdown-item" href="#">In Progress</a>
+													<a class="dropdown-item" href="#">Resolved</a>
+												</div>
+												</div>
+											</div>
+											</div>
+										</li>
+										<li class="list-group-item">
+											<div class="row">
+											<div class="col-md-8">
+												<h6 class="ticket-title">Error message when submitting form</h6>
+												<p class="ticket-description">From: researcher@@scholarstack.org <br>Form submissions are resulting in an error message</p>
+												<small class="text-muted">Opened on 05/10/2023 at 2:15 PM</small>
+											</div>
+											<div class="col-md-2">
+												<div class="dropdown">
+												<button class="btn btn-warning dropdown-toggle" type="button" id="ticket2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													In Progress
+												</button>
+												<div class="dropdown-menu" aria-labelledby="ticket2">
+													<a class="dropdown-item" href="#">Open</a>
+													<a class="dropdown-item" href="#">In Progress</a>
+													<a class="dropdown-item" href="#">Resolved</a>
+												</div>
+												</div>
+											</div>
+											</div>
+										</li>
+										<li class="list-group-item">
+											<div class="row">
+											<div class="col-md-8">
+												<h6 class="ticket-title">Feature request: Add dark mode</h6>
+												<p class="ticket-description">From: researcher@@scholarstack.org <br>Can you add a dark mode option to the app?</p>
+												<small class="text-muted">Opened on 05/08/2023 at 9:45 AM</small>
+											</div>
+											<div class="col-md-2">
+												<div class="dropdown">
+												<button class="btn btn-success dropdown-toggle" type="button" id="ticket3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													Resolved
+												</button>
+												<div class="dropdown-menu" aria-labelledby="ticket3">
+													<a class="dropdown-item" href="#">Open</a>
+													<a class="dropdown-item" href="#">In Progress</a>
+													<a class="dropdown-item" href="#">Resolved</a>
+												</div>
+												</div>
+											</div>
+											</div>
+										</li>
+										<li class="list-group-item">
+											<div class="row">
+											<div class="col-md-8">
+												<h6 class="ticket-title">Bug: App crashes when navigating to settings page</h6>
+												<p class="ticket-description">From: researcher@@scholarstack.org <br>The app crashes when users navigate to the settings page</p>
+												<small class="text-muted">Opened on 05/06/2023 at 4:20 PM</small>
+											</div>
+											<div class="col-md-2">
+												<div class="dropdown">
+												<button class="btn btn-info dropdown-toggle" type="button" id="ticket4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													Open
+												</button>
+												<div class="dropdown-menu" aria-labelledby="ticket4">
+													<a class="dropdown-item" href="#">Open</a>
+													<a class="dropdown-item" href="#">In Progress</a>
+													<a class="dropdown-item" href="#">Resolved</a>
+												</div>
+												</div>
+											</div>
+											</div>
+										</li>
+										</ul>
+									</div>
+								</div>
+							</div><!-- add post new box -->
+							@* <div class="loadMore">
+							<div class="central-meta item">
+								<div class="user-post">
+									<div class="friend-info">
+										<figure>
+											<img src="images/resources/friend-avatar10.jpg" alt="">
+										</figure>
+										<div class="friend-name">
+											<ins><a href="#" title="">Janice Griffith</a></ins>
+											<span>published: june,2 2018 19:PM</span>
+										</div>
+										<div class="post-meta">
+											<img src="images/resources/user-post.jpg" alt="">
+											<div class="we-video-info">
+												<ul>
+													<li>
+														<span class="views" data-toggle="tooltip" title="views">
+															<i class="fa fa-eye"></i>
+															<ins>1.2k</ins>
+														</span>
+													</li>
+													<li>
+														<span class="comment" data-toggle="tooltip" title="Comments">
+															<i class="fa fa-comments-o"></i>
+															<ins>52</ins>
+														</span>
+													</li>
+													<li>
+														<span class="like" data-toggle="tooltip" title="upvote">
+																<i class="fa fa-thumbs-up" aria-hidden="true"></i>
+															<ins>2.2k</ins>
+														</span>
+													</li>
+													<li>
+														<span class="dislike" data-toggle="tooltip" title="downvote">
+															<i class="fa fa-thumbs-down" aria-hidden="true"></i>
+															<ins>200</ins>
+														</span>
+													</li>
+													<li class="social-media">
+														<div class="menu">
+															<div class="btn trigger"><i class="fa fa-share-alt"></i></div>
+															<div class="rotater">
+															<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-html5"></i></a></div>
+															</div>
+															<div class="rotater">
+															<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-facebook"></i></a></div>
+															</div>
+															<div class="rotater">
+															<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-google-plus"></i></a></div>
+															</div>
+															<div class="rotater">
+															<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-twitter"></i></a></div>
+															</div>
+															<div class="rotater">
+															<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-css3"></i></a></div>
+															</div>
+															<div class="rotater">
+															<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-instagram"></i></a>
+															</div>
+															</div>
+															<div class="rotater">
+															<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-dribbble"></i></a>
+															</div>
+															</div>
+															<div class="rotater">
+															<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-pinterest"></i></a>
+															</div>
+															</div>
+
+														</div>
+													</li>
+												</ul>
+											</div>
+											<div class="description">
+												<p>
+													Checkout my latest research in physics about black holes! 🥳
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="coment-area">
+										<ul class="we-comet">
+											<li>
+												<div class="comet-avatar">
+													<img src="images/resources/comet-1.jpg" alt="">
+												</div>
+												<div class="we-comment">
+													<div class="coment-head">
+														<h5><a href="#" title="">Jason borne</a></h5>
+														<span>1 year ago</span>
+														<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+														<a class="we-reply" style="color: red;" href="#" title="Delete Comment" id="delete-comment"><i class="fa fa-trash"></i></a>
+														<a class="we-reply" style="color: rgb(128, 0, 0);" href="#" title="Ban User" id="ban-user"><i class="fa fa-ban"></i></a>
+													</div>
+													<p>We are working on topological data analysis of the black hole images. Please vote this resource and like our post 😊</p>
+												</div>
+												<ul>
+													<li>
+														<div class="comet-avatar">
+															<img src="images/resources/comet-2.jpg" alt="">
+														</div>
+														<div class="we-comment">
+															<div class="coment-head">
+																<h5><a href="#" title="">alexendra dadrio</a></h5>
+																<span>1 month ago</span>
+																<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+																<a class="we-reply" style="color: red;" href="#" title="Delete Comment" id="delete-comment"><i class="fa fa-trash"></i></a>
+																<a class="we-reply" style="color: rgb(128, 0, 0);" href="#" title="Ban User" id="ban-user"><i class="fa fa-ban"></i></a>
+															</div>
+															<p>I just read the paper, it's really nice and the findings are ground breaking 🤔</p>
+														</div>
+													</li>
+													<li>
+														<div class="comet-avatar">
+															<img src="images/resources/comet-3.jpg" alt="">
+														</div>
+														<div class="we-comment">
+															<div class="coment-head">
+																<h5><a href="#" title="">Olivia</a></h5>
+																<span>16 days ago</span>
+																<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+																<a class="we-reply" style="color: red;" href="#" title="Delete Comment" id="delete-comment"><i class="fa fa-trash"></i></a>
+																<a class="we-reply" style="color: rgb(128, 0, 0);" href="#" title="Ban User" id="ban-user"><i class="fa fa-ban"></i></a>
+															</div>
+															<p>Although the research is ground breaking, I have many doubts about the findings</p>
+														</div>
+													</li>
+												</ul>
+											</li>
+											<li>
+												<a href="#" title="" class="showmore underline">more comments</a>
+											</li>
+											<li class="post-comment">
+												<div class="comet-avatar">
+													<img src="images/resources/comet-1.jpg" alt="">
+												</div>
+												<div class="post-comt-box">
+													<form method="post">
+														<textarea placeholder="Post your comment"></textarea>
+														<div class="add-smiles">
+															<span class="em em-expressionless" title="add icon"></span>
+														</div>
+														<div class="smiles-bunch">
+															<i class="em em---1"></i>
+															<i class="em em-smiley"></i>
+															<i class="em em-anguished"></i>
+															<i class="em em-laughing"></i>
+															<i class="em em-angry"></i>
+															<i class="em em-astonished"></i>
+															<i class="em em-blush"></i>
+															<i class="em em-disappointed"></i>
+															<i class="em em-worried"></i>
+															<i class="em em-kissing_heart"></i>
+															<i class="em em-rage"></i>
+															<i class="em em-stuck_out_tongue"></i>
+														</div>
+														<button type="submit"></button>
+													</form>	
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="central-meta item">
+								<div class="user-post">
+									<div class="friend-info">
+										<figure>
+											<img src="images/resources/nearly1.jpg" alt="">
+										</figure>
+										<div class="friend-name">
+											<ins><a href="#" title="">Sara Grey</a></ins>
+											<span>published: june,2 2018 19:PM</span>
+										</div>
+										<div class="post-meta">
+											<iframe src="https://www.youtube.com/embed/reZMBklA8-c" height="315" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+											<div class="we-video-info">
+												<ul>
+													<li>
+														<span class="views" data-toggle="tooltip" title="views">
+															<i class="fa fa-eye"></i>
+															<ins>1.2k</ins>
+														</span>
+													</li>
+													<li>
+														<span class="comment" data-toggle="tooltip" title="Comments">
+															<i class="fa fa-comments-o"></i>
+															<ins>52</ins>
+														</span>
+													</li>
+													<li>
+														<span class="like" data-toggle="tooltip" title="upvote">
+																<i class="fa fa-thumbs-up" aria-hidden="true"></i>
+															<ins>2.2k</ins>
+														</span>
+													</li>
+													<li>
+														<span class="dislike" data-toggle="tooltip" title="downvote">
+															<i class="fa fa-thumbs-down" aria-hidden="true"></i>
+															<ins>200</ins>
+														</span>
+													</li>
+													<li class="social-media">
+														<div class="menu">
+															<div class="btn trigger"><i class="fa fa-share-alt"></i></div>
+															<div class="rotater">
+															<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-html5"></i></a></div>
+															</div>
+															<div class="rotater">
+															<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-facebook"></i></a></div>
+															</div>
+															<div class="rotater">
+															<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-google-plus"></i></a></div>
+															</div>
+															<div class="rotater">
+															<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-twitter"></i></a></div>
+															</div>
+															<div class="rotater">
+															<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-css3"></i></a></div>
+															</div>
+															<div class="rotater">
+															<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-instagram"></i></a>
+															</div>
+															</div>
+															<div class="rotater">
+															<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-dribbble"></i></a>
+															</div>
+															</div>
+															<div class="rotater">
+															<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-pinterest"></i></a>
+															</div>
+															</div>
+
+														</div>
+													</li>
+												</ul>
+											</div>
+											<div class="description">
+												<p>
+													Checkout my team's latest paper on the image analysis of the supermassive black hole at the center of our galaxy 😇
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="coment-area">
+										<ul class="we-comet">
+											<li>
+												<div class="comet-avatar">
+													<img src="images/resources/comet-1.jpg" alt="">
+												</div>
+												<div class="we-comment">
+													<div class="coment-head">
+														<h5><a href="#" title="">Jason borne</a></h5>
+														<span>1 year ago</span>
+														<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+														<a class="we-reply" style="color: red;" href="#" title="Delete Comment" id="delete-comment"><i class="fa fa-trash"></i></a>
+														<a class="we-reply" style="color: rgb(128, 0, 0);" href="#" title="Ban User" id="ban-user"><i class="fa fa-ban"></i></a>														
+													</div>
+													<p>That's interesting!</p>
+												</div>
+
+											</li>
+											<li>
+												<a href="#" title="" class="showmore underline">more comments</a>
+											</li>
+											<li class="post-comment">
+												<div class="comet-avatar">
+													<img src="images/resources/comet-2.jpg" alt="">
+												</div>
+												<div class="post-comt-box">
+													<form method="post">
+														<textarea placeholder="Post your comment"></textarea>
+														<div class="add-smiles">
+															<span class="em em-expressionless" title="add icon"></span>
+														</div>
+														<div class="smiles-bunch">
+															<i class="em em---1"></i>
+															<i class="em em-smiley"></i>
+															<i class="em em-anguished"></i>
+															<i class="em em-laughing"></i>
+															<i class="em em-angry"></i>
+															<i class="em em-astonished"></i>
+															<i class="em em-blush"></i>
+															<i class="em em-disappointed"></i>
+															<i class="em em-worried"></i>
+															<i class="em em-kissing_heart"></i>
+															<i class="em em-rage"></i>
+															<i class="em em-stuck_out_tongue"></i>
+														</div>
+														<button type="submit"></button>
+													</form>	
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							</div> *@
+						</div><!-- centerl meta -->
+						@* <div class="col-lg-3">
+							<aside class="sidebar static">
+								<div class="widget">
+									<h4 class="widget-title">Google Scholar Account</h4>	
+									<div class="your-page">
+										<figure>
+											<a href="#" title=""><img src="images/resources/admin2.jpg" alt=""></a>
+										</figure>
+										<div class="page-meta">
+											<a href="https://scholar.google.com.eg/citations?hl=en&user=wejiWMcAAAAJ&view_op=list_works&sortby=pubdate" title="" class="underline">Researcher Profile</a>
+										</div>
+										<div class="page-likes">
+											<ul class="nav nav-tabs likes-btn">
+												<li class="nav-item"><a class="active" href="https://scholar.google.com.eg/citations?hl=en&user=wejiWMcAAAAJ&view_op=list_works" data-toggle="tab">Citations</a></li>
+												<li class="nav-item"><a class="active" href="https://scholar.google.com.eg/citations?hl=en&user=wejiWMcAAAAJ&view_op=list_works&sortby=pubdate" data-toggle="tab">Latest</a></li>
+											</ul>
+											<!-- Tab panes -->
+											<div class="tab-content">
+												<div class="tab-pane active fade show " id="link1" >
+													<span><i class="fa fa-book"></i>273</span>
+												</div>
+											</div>
+										</div>
+										</div>
+									</div>
+								</div>
+							</aside>
+						</div><!-- sidebar --> *@
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>	
+</section>
