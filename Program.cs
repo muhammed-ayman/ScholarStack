@@ -19,6 +19,8 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseStatusCodePagesWithReExecute("/errors/{0}");
+
 app.UseRouting();
 
 app.UseAuthorization();
