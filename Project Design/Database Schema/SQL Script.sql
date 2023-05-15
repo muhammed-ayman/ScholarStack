@@ -7,9 +7,11 @@ USE ScholarStack;
 -- Create User table
 CREATE TABLE [User] (
   [id] INT PRIMARY KEY,
-  [name] NVARCHAR(100) NOT NULL,
+  [first_name] NVARCHAR(100) NOT NULL,
+  [last_name] NVARCHAR(100) NOT NULL,
+  [username] NVARCHAR(100) NOT NULL,
   [role] NVARCHAR(50) NOT NULL,
-  [google_scholar_id] NVARCHAR(100) UNIQUE,
+  [google_scholar_url] NVARCHAR(200) UNIQUE,
   [email] NVARCHAR(100) UNIQUE NOT NULL,
   [password] NVARCHAR(50) NOT NULL,
   [timestamp] DATETIME NOT NULL DEFAULT GETDATE()
