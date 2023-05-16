@@ -1,6 +1,8 @@
-﻿namespace ScholarStack.Models;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+
+namespace ScholarStack.Models
+{
 	public class User
 	{
 		public int ID { get; set; }
@@ -18,10 +20,10 @@ using System.ComponentModel.DataAnnotations;
 		public string Password { get; set; }
 
 		[Required (ErrorMessage = "Username is Required"), MinLength(5), MaxLength(100)]
-		public string UserName { get; set; }
+		public string Username { get; set; }
 
 		[Required (ErrorMessage = "Google Scholar Profile URL is Required"), Url]
 		public string GoogleScholarURL { get; set; }
 
 	}
-
+}

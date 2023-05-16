@@ -9,8 +9,8 @@ namespace ScholarStack.Pages
         
         private readonly DB_Manager _dbManager;
 
-        [BindProperty]
-        public User u { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public User? user { get; set; } = default!;
         
         public LoginModel(DB_Manager db)
         {
@@ -23,10 +23,15 @@ namespace ScholarStack.Pages
         public void OnPost() {
             
         }
-        
+
+        [HttpPost]
         public IActionResult OnPostRegister()
         {
-            
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
             return RedirectToPage("Index");
         }
 
