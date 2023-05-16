@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ScholarStack.Data;
 
@@ -19,10 +21,13 @@ namespace ScholarStack
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            // Retrieve the connection string from appsettings.json
+            string connectionString = "Data Source=.;Database=ScholarStack;User ID=sa;Password=aymanAyman!";
+
+            // Register the database context
             services.AddDbContext<ScholarStackDBContext>(options =>
                 options.UseSqlServer(connectionString));
-                
+          
             services.AddControllersWithViews();
         }
 

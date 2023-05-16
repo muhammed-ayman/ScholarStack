@@ -162,3 +162,23 @@ CREATE TABLE [ResearchInterest] (
   FOREIGN KEY ([user_id]) REFERENCES [User]([id]),
   FOREIGN KEY ([topic_id]) REFERENCES [Topic]([id])
 );
+
+-- Create Role table
+CREATE TABLE [Role] (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    role_name VARCHAR(100)
+);
+
+-- Create Privilege table
+CREATE TABLE [Privilege] (
+    [id] INT IDENTITY(1,1) PRIMARY KEY,
+    [privilege_name] VARCHAR(100)
+);
+
+-- Create RolePrivilege table
+CREATE TABLE RolePrivilege (
+    [role_id] INT PRIMARY KEY,
+    [privilege_id] INT,
+    FOREIGN KEY ([role_id]) REFERENCES Role (Id),
+    FOREIGN KEY ([privilege_id]) REFERENCES Privilege (Id)
+);
