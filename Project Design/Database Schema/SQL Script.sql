@@ -4,6 +4,26 @@ CREATE DATABASE ScholarStack;
 -- Use the newly created database
 USE ScholarStack;
 
+-- Create Role table
+CREATE TABLE [Role] (
+    [id] INT IDENTITY(1,1) PRIMARY KEY,
+    [role_name] VARCHAR(100)
+);
+
+-- Create Privilege table
+CREATE TABLE [Privilege] (
+    [id] INT IDENTITY(1,1) PRIMARY KEY,
+    [privilege_name] VARCHAR(100)
+);
+
+-- Create RolePrivilege table
+CREATE TABLE [RolePrivilege] (
+    [role_id] INT PRIMARY KEY,
+    [privilege_id] INT,
+    FOREIGN KEY ([role_id]) REFERENCES [Role]([id]),
+    FOREIGN KEY ([privilege_id]) REFERENCES [Privilege]([id])
+);
+
 -- Create User table
 CREATE TABLE [User] (
   [id] INT PRIMARY KEY,
@@ -163,24 +183,4 @@ CREATE TABLE [ResearchInterest] (
   PRIMARY KEY ([user_id], [topic_id]),
   FOREIGN KEY ([user_id]) REFERENCES [User]([id]),
   FOREIGN KEY ([topic_id]) REFERENCES [Topic]([id])
-);
-
--- Create Role table
-CREATE TABLE [Role] (
-    [id] INT IDENTITY(1,1) PRIMARY KEY,
-    [role_name] VARCHAR(100)
-);
-
--- Create Privilege table
-CREATE TABLE [Privilege] (
-    [id] INT IDENTITY(1,1) PRIMARY KEY,
-    [privilege_name] VARCHAR(100)
-);
-
--- Create RolePrivilege table
-CREATE TABLE RolePrivilege (
-    [role_id] INT PRIMARY KEY,
-    [privilege_id] INT,
-    FOREIGN KEY ([role_id]) REFERENCES [Role]([id]),
-    FOREIGN KEY ([privilege_id]) REFERENCES [Privilege]([id])
 );
