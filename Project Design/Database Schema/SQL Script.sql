@@ -167,8 +167,8 @@ CREATE TABLE [ResearchInterest] (
 
 -- Create Role table
 CREATE TABLE [Role] (
-    id INT IDENTITY(1,1) PRIMARY KEY,
-    role_name VARCHAR(100)
+    [id] INT IDENTITY(1,1) PRIMARY KEY,
+    [role_name] VARCHAR(100)
 );
 
 -- Create Privilege table
@@ -181,6 +181,6 @@ CREATE TABLE [Privilege] (
 CREATE TABLE RolePrivilege (
     [role_id] INT PRIMARY KEY,
     [privilege_id] INT,
-    FOREIGN KEY ([role_id]) REFERENCES Role (Id),
-    FOREIGN KEY ([privilege_id]) REFERENCES Privilege (Id)
+    FOREIGN KEY ([role_id]) REFERENCES [Role]([id]),
+    FOREIGN KEY ([privilege_id]) REFERENCES [Privilege]([id])
 );
