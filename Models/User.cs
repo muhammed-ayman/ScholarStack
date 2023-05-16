@@ -16,7 +16,7 @@ namespace ScholarStack.Models
 		[Required (ErrorMessage = "Email is Required"), EmailAddress]
 		public string Email { get; set; }
 
-		[Required (ErrorMessage = "Password is Required"), PasswordPropertyText]
+		[Required (ErrorMessage = "Password is Required"), PasswordPropertyText, MinLength(8)]
 		public string Password { get; set; }
 
 		[Required (ErrorMessage = "Username is Required"), MinLength(5), MaxLength(100)]
