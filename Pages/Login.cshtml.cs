@@ -42,7 +42,8 @@ namespace ScholarStack.Pages
                 Email = user.Email,
                 Password = user.Password,
                 Username = user.Username,
-                GoogleScholarURL = user.GoogleScholarURL
+                GoogleScholarURL = user.GoogleScholarURL,
+                UserRole = 1, // Ordinary user role
             };
 
             // Add the new user to the DbContext and save changes
