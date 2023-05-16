@@ -5,7 +5,11 @@ namespace ScholarStack.Pages
 {
     public class ResourceFeedModel : PageModel
     {
-        public void OnGet()
+
+		public IActionResult OnGetPartial() =>
+	        Partial("_community-post");
+
+		public void OnGet()
         {
         }
     }
