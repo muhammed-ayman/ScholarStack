@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using ScholarStack.Data;
 
 namespace ScholarStack
 {
@@ -17,6 +19,10 @@ namespace ScholarStack
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<ScholarStackDBContext>(options =>
+                options.UseSqlServer(connectionString));
+                
             services.AddControllersWithViews();
         }
 
@@ -46,7 +52,6 @@ namespace ScholarStack
 
             app.UseStatusCodePagesWithRedirects("/errors/{0}");
             app.UseStaticFiles();
-
         }
     }
 }
