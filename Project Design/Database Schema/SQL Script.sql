@@ -10,11 +10,13 @@ CREATE TABLE [User] (
   [first_name] NVARCHAR(100) NOT NULL,
   [last_name] NVARCHAR(100) NOT NULL,
   [username] NVARCHAR(100) NOT NULL,
-  [role] NVARCHAR(50) NOT NULL,
+  [role] INT NOT NULL,
+  [profile_picture] NVARCHAR(500) NOT NULL,
   [google_scholar_url] NVARCHAR(200) UNIQUE,
   [email] NVARCHAR(100) UNIQUE NOT NULL,
   [password] NVARCHAR(50) NOT NULL,
-  [timestamp] DATETIME NOT NULL DEFAULT GETDATE()
+  [timestamp] DATETIME NOT NULL DEFAULT GETDATE(),
+  FOREIGN KEY ([role]) REFERENCES Role (Id),
 );
 
 -- Create Community Post table
