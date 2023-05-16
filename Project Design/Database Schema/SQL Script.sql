@@ -26,12 +26,12 @@ CREATE TABLE [RolePrivilege] (
 
 -- Create User table
 CREATE TABLE [User] (
-  [id] INT PRIMARY KEY,
+  [id] INT IDENTITY(1,1) PRIMARY KEY,
   [first_name] NVARCHAR(100) NOT NULL,
   [last_name] NVARCHAR(100) NOT NULL,
   [username] NVARCHAR(100) NOT NULL,
   [role] INT NOT NULL,
-  [profile_picture] NVARCHAR(500) NOT NULL,
+  [profile_picture] NVARCHAR(500) ,
   [google_scholar_url] NVARCHAR(200) UNIQUE,
   [email] NVARCHAR(100) UNIQUE NOT NULL,
   [password] NVARCHAR(50) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE [User] (
 
 -- Create Community Post table
 CREATE TABLE [CommunityPost] (
-  [id] INT PRIMARY KEY,
+  [id] INT IDENTITY(1,1) PRIMARY KEY,
   [content] NVARCHAR(MAX) NOT NULL,
   [timestamp] DATETIME NOT NULL DEFAULT GETDATE(),
   [creator_id] INT NOT NULL,
@@ -50,14 +50,14 @@ CREATE TABLE [CommunityPost] (
 
 -- Create Resource table
 CREATE TABLE [Resource] (
-  [id] INT PRIMARY KEY,
+  [id] INT IDENTITY(1,1) PRIMARY KEY,
   [hyper_link] NVARCHAR(500) UNIQUE NOT NULL,
   [timestamp] DATETIME NOT NULL DEFAULT GETDATE()
 );
 
 -- Create ResourcePost table
 CREATE TABLE [ResourcePost] (
-  [id] INT PRIMARY KEY,
+  [id] INT IDENTITY(1,1) PRIMARY KEY,
   [timestamp] DATETIME NOT NULL DEFAULT GETDATE(),
   [resource_id] INT NOT NULL,
   FOREIGN KEY ([resource_id]) REFERENCES [Resource]([id])
@@ -65,7 +65,7 @@ CREATE TABLE [ResourcePost] (
 
 -- Create Textbook table
 CREATE TABLE [Textbook] (
-  [id] INT PRIMARY KEY,
+  [id] INT IDENTITY(1,1) PRIMARY KEY,
   [publisher] NVARCHAR(100),
   [resource_id] INT NOT NULL,
   FOREIGN KEY ([resource_id]) REFERENCES [Resource]([id])
@@ -73,7 +73,7 @@ CREATE TABLE [Textbook] (
 
 -- Create ResearchPaper table
 CREATE TABLE [ResearchPaper] (
-  [id] INT PRIMARY KEY,
+  [id] INT IDENTITY(1,1) PRIMARY KEY,
   [DOI] NVARCHAR(100) UNIQUE NOT NULL,
   [citations] INT,
   [resource_id] INT NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE [ResearchPaper] (
 
 -- Create Comment table
 CREATE TABLE [Comment] (
-  [id] INT PRIMARY KEY,
+  [id] INT IDENTITY(1,1) PRIMARY KEY,
   [content] NVARCHAR(MAX) NOT NULL,
   [timestamp] DATETIME NOT NULL DEFAULT GETDATE()
 );
@@ -109,7 +109,7 @@ CREATE TABLE [Vote] (
 
 -- Create Ticket table
 CREATE TABLE [Ticket] (
-  [id] INT PRIMARY KEY,
+  [id] INT IDENTITY(1,1) PRIMARY KEY,
   [content] NVARCHAR(MAX) NOT NULL,
   [timestamp] DATETIME NOT NULL DEFAULT GETDATE(),
   [user_id] INT NOT NULL,
@@ -140,7 +140,7 @@ CREATE TABLE [ResourcePostComment] (
 
 -- Create CommunityPostAttachment table
 CREATE TABLE [CommunityPostAttachment] (
-  [id] INT PRIMARY KEY,
+  [id] INT IDENTITY(1,1) PRIMARY KEY,
   [url] NVARCHAR(500) NOT NULL UNIQUE,
   [community_post_id] INT NOT NULL,
   FOREIGN KEY ([community_post_id]) REFERENCES [CommunityPost]([id])
@@ -148,13 +148,13 @@ CREATE TABLE [CommunityPostAttachment] (
 
 -- Create Topic table
 CREATE TABLE [Topic] (
-  [id] INT PRIMARY KEY,
+  [id] INT IDENTITY(1,1) PRIMARY KEY,
   [name] NVARCHAR(100) NOT NULL
 );
 
 -- Create Keyword table
 CREATE TABLE [Keyword] (
-  [id] INT PRIMARY KEY,
+  [id] INT IDENTITY(1,1) PRIMARY KEY,
   [name] NVARCHAR(100) NOT NULL
 );
 
