@@ -30,7 +30,7 @@ namespace ScholarStack.Models
 		[Column("role")]
 		public int UserRole { get; set; }
 
-		[Required(ErrorMessage = "Please choose a photo"), Column("profile_picture")]
+		[Column("profile_picture")]
 		public string UserImage { get; set; }
 
 	}

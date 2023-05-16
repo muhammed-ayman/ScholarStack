@@ -46,7 +46,7 @@ namespace ScholarStack.Pages
             };
 
             // Add the new user to the DbContext and save changes
-            _dbContext.Users.Add(newUser);
+            _dbContext.User.Add(newUser);
             _dbContext.SaveChanges();
 
             return RedirectToPage("Index");
