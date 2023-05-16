@@ -42,6 +42,6 @@ namespace ScholarStack.Models
         public DateTime RegistrationDate { get; set; }
 
 		[ForeignKey("UserRole")]
-        public Role Role { get; set; }
+        public Role? Role { get; set; }
 	}
 }
