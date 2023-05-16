@@ -37,5 +37,11 @@ namespace ScholarStack.Models
 		[Column("profile_picture")]
 		public string? UserImage { get; set; }
 
+		[Column("timestamp")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime RegistrationDate { get; set; }
+
+		[ForeignKey("UserRole")]
+        public Role Role { get; set; }
 	}
 }

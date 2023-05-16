@@ -11,5 +11,7 @@ namespace ScholarStack.Data
         }
 
         public DbSet<User> User { get; set; }
+        public DbSet<CommunityPost> CommunityPost { get; set; }
+        public DbSet<ResourcePost> ResourcePost { get; set; }
     }
 }
