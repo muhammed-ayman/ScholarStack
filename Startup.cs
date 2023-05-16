@@ -21,13 +21,6 @@ namespace ScholarStack
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // Retrieve the connection string from appsettings.json
-            string connectionString = "Data Source=.;Database=ScholarStack;User ID=sa;Password=aymanAyman!";
-
-            // Register the database context
-            services.AddDbContext<ScholarStackDBContext>(options =>
-                options.UseSqlServer(connectionString));
-          
             services.AddControllersWithViews();
         }
 

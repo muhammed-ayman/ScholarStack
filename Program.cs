@@ -1,10 +1,15 @@
+using Microsoft.EntityFrameworkCore;
 using ScholarStack.Models;
+using ScholarStack.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<DB_Manager>();
+builder.Services.AddDbContext<ScholarStackDBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 
 var app = builder.Build();
 
