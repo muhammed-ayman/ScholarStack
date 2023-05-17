@@ -184,3 +184,12 @@ CREATE TABLE [ResearchInterest] (
   FOREIGN KEY ([user_id]) REFERENCES [User]([id]),
   FOREIGN KEY ([topic_id]) REFERENCES [Topic]([id])
 );
+
+-- Insert Default User Roles
+INSERT INTO [Role] ([role_name]) VALUES ('user');
+INSERT INTO [Role] ([role_name]) VALUES ('manager');
+INSERT INTO [Role] ([role_name]) VALUES ('admin');
+
+-- Insert Default User
+INSERT INTO [User] (first_name, last_name, username, role, google_scholar_url, email, password) 
+  VALUES ('Mohammed', 'Ayman', 'muhammed-ayman', 1, 'https://www.google.com', 'muhammed.ayman@outlook.com', '123456')
