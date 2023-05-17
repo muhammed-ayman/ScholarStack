@@ -85,9 +85,10 @@
 							</div><!-- add post new box -->
 							<div class="loadMore">
 								@{
-									ViewData["usernames"] = Model.usernames;
-									for(int i = 0; i < 5; i++)
+									int postCount = Model.CommunityPosts.Count();
+									for(int i = 0; i < postCount; i++)
 									{
+										ViewData["CommunityPost"] = Model.CommunityPosts[i];
 										<partial name="Post Elements/_community-post" view-data="ViewData"/>
 									}
 								}

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using ScholarStack.Data;
 using ScholarStack.Models;
 
 namespace ScholarStack.Pages;
@@ -7,14 +9,14 @@ namespace ScholarStack.Pages;
 public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
-    private readonly DB_Manager _db;
-	public string[] usernames = new string[] { "Mohz", "Oppikn", "KingH" };
-    public string username = "Mohz";
+    private readonly ScholarStackDBContext _dbContext;
 
-	public IndexModel(ILogger<IndexModel> logger, DB_Manager db)
+	public List<CommunityPost> CommunityPosts { get; set; }
+
+	public IndexModel(ILogger<IndexModel> logger, ScholarStackDBContext dBContext)
     {
         _logger = logger;
-        _db = db;
+        _dbContext = dBContext;
     }
 
     public IActionResult OnGetPartial() =>
@@ -22,6 +24,23 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-
+        RetrievePosts();   
     }
+
+	private void RetrievePosts()
+	{
+		CommunityPosts = _dbContext.CommunityPost
+			.Include(p => p.User)
+			.Include(p => p.Attachment)
+			.Select(p => new CommunityPost
+			{
+				ID = p.ID,
+				Content = p.Content,
+				TimeStamp = p.TimeStamp,
+				CreatorID = p.CreatorID,
+				User = p.User,
+				Attachment = p.Attachment
+			})
+			.ToList();
+	}
 }
