@@ -1,5 +1,6 @@
 @page
-@model IndexModel
+@using ScholarStack.Models
+@model ScholarStack.Pages.DashboardModel
 @{
     ViewData["Title"] = "Admin Dashboard";
 }
@@ -21,23 +22,23 @@
 									<ul class="naves">
 										<li>
 											<i class="ti-clipboard"></i>
-											<a href="#" title="">Community Posts (1211)</a>
+											<a href="#" title="">Community Posts (@Model.Statistics.CommunityPostsCount)</a>
 										</li>
 										<li>
 											<i class="ti-clipboard"></i>
-											<a href="#" title="">Resource Posts (1210)</a>
+											<a href="#" title="">Resource Posts (@Model.Statistics.ResourcePostsCount)</a>
 										</li>
 										<li>
 											<i class="ti-files"></i>
-											<a href="#" title="">Newly Registered Users (2000)</a>
+											<a href="#" title="">Registered Users (@Model.Statistics.RegisteredUsers)</a>
 										</li>
 										<li>
 											<i class="ti-clipboard"></i>
-											<a href="#" title="">Managers (20)</a>
+											<a href="#" title="">Managers (@Model.Statistics.ManagersCount)</a>
 										</li>
 										<li>
 											<i class="ti-clipboard"></i>
-											<a href="#" title="">Promoted Posts (50)</a>
+											<a href="#" title="">Promoted Posts (0)</a>
 										</li>
 									</ul>
 								</div><!-- Shortcuts -->
@@ -160,38 +161,25 @@
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-												<td>John Doe</td>
-												<td>john.doe@example.com</td>
-												<td>User</td>
-												<td>
-													<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteUserModal">
-													<i class="fa fa-trash"></i> Delete
-													</button>
-													<button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#banUserModal">
-													<i class="fa fa-ban"></i> Ban
-													</button>
-													<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#activateUserModal">
-													<i class="fa fa-check"></i> Activate
-													</button>
-												</td>
-												</tr>
-												<tr>
-												<td>Jane Smith</td>
-												<td>jane.smith@example.com</td>
-												<td>Admin</td>
-												<td>
-													<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteUserModal">
-													<i class="fa fa-trash"></i> Delete
-													</button>
-													<button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#banUserModal">
-													<i class="fa fa-ban"></i> Ban
-													</button>
-													<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#activateUserModal">
-													<i class="fa fa-check"></i> Activate
-													</button>
-												</td>
-												</tr>
+												@foreach (User user in Model.Users)
+												{
+													<tr>
+														<td>@user.FirstName @user.LastName</td>
+														<td>@user.Email</td>
+														<td>@user.Role.Name</td>
+														<td>
+															<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteUserModal">
+															<i class="fa fa-trash"></i> Delete
+															</button>
+															<button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#banUserModal">
+															<i class="fa fa-ban"></i> Ban
+															</button>
+															<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#activateUserModal">
+															<i class="fa fa-check"></i> Activate
+															</button>
+														</td>
+													</tr>
+												}
 											</tbody>
 											</table>
 										</div>
