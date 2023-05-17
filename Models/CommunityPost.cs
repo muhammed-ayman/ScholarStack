@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ScholarStack.Models
 {
 	public class CommunityPost
 	{
-		
 		[Column("id")]
 		public int ID { get; set; }
 
@@ -16,5 +17,12 @@ namespace ScholarStack.Models
 
 		[Column("creator_id")]
 		public int CreatorID { get; set; }
+
+		[ForeignKey("CreatorID")]
+		public User User { get; set; }
+
+		public CommunityPostAttachment? Attachment { get; set; }
+
+		// public ICollection<CommunityPostComment>? CommunityPostComments { get; set; }
 	}
 }

@@ -12,5 +12,11 @@ namespace ScholarStack.Models
 
 		[Column("community_post_id")]
 		public int CommunityPostID { get; set; }
+
+		[ForeignKey("UserID")]
+		public User User { get; set; }
+
+		[ForeignKey("CommentID")]
+		public Comment Comment { get; set; }
 	}
 }
