@@ -44,7 +44,7 @@
 									</figure>
 									<div class="newpst-input">
 										<form method="post">
-											<textarea rows="2" placeholder="write something"></textarea>
+											<textarea rows="2" placeholder="Share your groundbreaking discoveries with the world, @Model.AuthenticatedUser.FirstName!"></textarea>
 											<div class="attachments">
 												<ul>
 													<li>
@@ -103,7 +103,7 @@
 											<a href="#" title=""><img src="images/resources/admin2.jpg" alt=""></a>
 										</figure>
 										<div class="page-meta">
-											<a href="https://scholar.google.com.eg/citations?hl=en&user=wejiWMcAAAAJ&view_op=list_works&sortby=pubdate" title="" class="underline">Researcher Profile</a>
+											<a href="@Model.AuthenticatedUser.GoogleScholarURL" title="" class="underline">@Model.AuthenticatedUser.Username's Scholar Profile</a>
 										</div>
 										<div class="page-likes">
 											<ul class="nav nav-tabs likes-btn">
