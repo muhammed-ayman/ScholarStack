@@ -42,14 +42,16 @@
 							<p>
 								New to ScholarStack? <a href="#" title="">Join now</a> to become a Scholar
 							</p>
-							<form method="post" asp-page-handler="login">
+							<form method="post" asp-page-handler="Login" asp-model="loginViewModel">
 								<div class="form-group">
-									<input type="text" id="input" required="required" />
+									<input type="text" id="input" asp-for="loginViewModel.Username"/>
 									<label class="control-label" for="input">Username</label><i class="mtrl-select"></i>
+									<span asp-validation-for="loginViewModel.Username" class="text-danger"></span>
 								</div>
 								<div class="form-group">
-									<input type="password" required="required" />
+									<input type="password" asp-for="loginViewModel.Password"/>
 									<label class="control-label" for="input">Password</label><i class="mtrl-select"></i>
+									<span asp-validation-for="loginViewModel.Password" class="text-danger"></span>
 								</div>
 								<div class="checkbox">
 									<label>
@@ -57,8 +59,14 @@
 									</label>
 								</div>
 								<a href="#" title="" class="forgot-pwd">Forgot Password?</a>
+								<span class="text-danger">
+									@if (ModelState.ContainsKey("InvalidLogin") && !string.IsNullOrEmpty(ModelState["InvalidLogin"].Errors.FirstOrDefault()?.ErrorMessage))
+									{
+										@ModelState["InvalidLogin"].Errors.FirstOrDefault()?.ErrorMessage
+									}
+								</span>
 								<div class="submit-btns">
-									<button class="mtr-btn signin" type="button"><span>Login</span></button>
+									<button class="mtr-btn signin" type="submit"><span>Login</span></button>
 									<button class="mtr-btn signup" type="button"><span>Register</span></button>
 								</div>
 								<br>
@@ -75,36 +83,36 @@
 							<p>
 								New to ScholarStack? <a href="#" title="">Join now</a> to become a Scholar
 							</p>
-							<form method="post" asp-page-handler="Register" id="registration-form">
+							<form method="post" asp-page-handler="Register" asp-model="registerViewModel" id="registration-form">
 								<div class="form-group">
-									<input type="text" required="required" asp-for="@Model.user.FirstName">
+									<input type="text" required="required" asp-for="registerViewModel.FirstName">
 									<label class="control-label" for="input">First Name</label><i class="mtrl-select"></i>
-									<span asp-validation-for="@Model.user.FirstName" class="text-danger"></span>
+									<span asp-validation-for="registerViewModel.FirstName" class="text-danger"></span>
 								</div>
 								<div class="form-group">
-									<input type="text" required="required" asp-for="@Model.user.LastName">
+									<input type="text" required="required" asp-for="registerViewModel.LastName">
 									<label class="control-label" for="input">Last Name</label><i class="mtrl-select"></i>
-									<span asp-validation-for="@Model.user.LastName" class="text-danger"></span>
+									<span asp-validation-for="registerViewModel.LastName" class="text-danger"></span>
 								</div>
 								<div class="form-group">
-									<input type="text" required="required" asp-for="@Model.user.Username">
+									<input type="text" required="required" asp-for="registerViewModel.Username">
 									<label class="control-label" for="input">Username</label><i class="mtrl-select"></i>
-									<span asp-validation-for="@Model.user.Username" class="text-danger"></span>
+									<span asp-validation-for="registerViewModel.Username" class="text-danger"></span>
 								</div>
 								<div class="form-group">
-									<input type="email" required="required" asp-for="@Model.user.Email">
+									<input type="email" required="required" asp-for="registerViewModel.Email">
 									<label class="control-label" for="input">Email</label><i class="mtrl-select"></i>
-									<span asp-validation-for="@Model.user.Email" class="text-danger"></span>
+									<span asp-validation-for="registerViewModel.Email" class="text-danger"></span>
 								</div>
 								<div class="form-group">
-									<input type="password" required="required" asp-for="@Model.user.Password">
+									<input type="password" required="required" asp-for="registerViewModel.Password">
 									<label class="control-label" for="input">Password</label><i class="mtrl-select"></i>
-									<span asp-validation-for="@Model.user.Password" class="text-danger"></span>
+									<span asp-validation-for="registerViewModel.Password" class="text-danger"></span>
 								</div>
 								<div class="form-group">
-									<input type="text" required="required" asp-for="@Model.user.GoogleScholarURL">
+									<input type="text" required="required" asp-for="registerViewModel.GoogleScholarURL">
 									<label class="control-label" for="input">Google Scholar Profile URL</label><i class="mtrl-select"></i>
-									<span asp-validation-for="@Model.user.GoogleScholarURL" class="text-danger"></span>
+									<span asp-validation-for="registerViewModel.GoogleScholarURL" class="text-danger"></span>
 								</div>
 								<a href="#" title="" class="already-have">Already have an account</a>
 								<div class="submit-btns">

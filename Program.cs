@@ -10,6 +10,13 @@ builder.Services.AddSingleton<DB_Manager>();
 builder.Services.AddDbContext<ScholarStackDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
+builder.Services.AddDistributedMemoryCache(); // Add a distributed cache for storing session data
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Set the session timeout duration
+    options.Cookie.HttpOnly = true; // Ensure the session cookie is accessible only through HTTP
+    options.Cookie.IsEssential = true; // Make the session cookie essential for authentication and authorization
+});
 
 var app = builder.Build();
 
@@ -25,6 +32,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseStatusCodePagesWithReExecute("/errors/{0}");
+
+app.UseSession();
 
 app.UseRouting();
 
