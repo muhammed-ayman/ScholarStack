@@ -40,7 +40,7 @@
 						<div class="log-reg-area sign">
 							<h2 class="log-title">Login</h2>
 							<p>
-								New to ScholarStack? <a href="#" title="">Join now</a> to become a Scholar
+								New to ScholarStack? <button class="btn-primary signup">Join now</button> to become a Scholar
 							</p>
 							<form method="post" asp-page-handler="Login" asp-model="loginViewModel">
 								<div class="form-group">
@@ -80,9 +80,6 @@
 						</div>
 						<div class="log-reg-area reg">
 							<h2 class="log-title">Register</h2>
-							<p>
-								New to ScholarStack? <a href="#" title="">Join now</a> to become a Scholar
-							</p>
 							<form method="post" asp-page-handler="Register" asp-model="registerViewModel" id="registration-form">
 								<div class="form-group">
 									<input type="text" required="required" asp-for="registerViewModel.FirstName">
