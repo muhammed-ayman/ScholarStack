@@ -34,7 +34,7 @@
 					<div class="timeline-info">
 						<ul>
 							<li class="admin-name">
-								<h5>Janice Griffith</h5>
+								<h5 style="text-transform: capitalize">@Model.AuthenticatedUser.FirstName @Model.AuthenticatedUser.LastName</h5>
 							</li>
 							<li>
 								<a class="active" href="Profile" title="" data-ripple="">Profile</a>
@@ -88,22 +88,21 @@
 												<a href="#basic" class="nav-link active" data-toggle="tab" >Basic info</a>
 											</li>
 											<li class="nav-item">
-												<a href="#work" class="nav-link" data-toggle="tab" >work and education</a>
+												<a href="#work" class="nav-link" data-toggle="tab" >Affiliation</a>
 											</li>
 											<li class="nav-item">
 												<a href="#interest" class="nav-link" data-toggle="tab"  >Research interests</a>
 											</li>
 											<li class="nav-item">
-												<a href="#lang" class="nav-link" data-toggle="tab" >languages</a>
+												<a href="#lang" class="nav-link" data-toggle="tab" >My articles</a>
 											</li>
 										</ul>
 										<div class="tab-content">
 											<div class="tab-pane fade show active" id="basic" >
 												<ul class="basics">
-													<li><i class="ti-user"></i>sarah grey</li>
-													<li><i class="ti-mobile"></i>+1-234-345675</li>
-													<li><i class="ti-email"></i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3c4553494e515d55507c59515d5550125f5351">[email&#160;protected]</a></li>
-													<li><i class="ti-world"></i>www.yoursite.com</li>
+													<li style="text-transform: capitalize"><i class="ti-user"></i>@Model.AuthenticatedUser.FirstName @Model.AuthenticatedUser.LastName</li>
+													<li><i class="ti-email"></i>@Model.AuthenticatedUser.Email</li>
+													<li><i class="ti-world"></i>@Model.AuthenticatedUser.GoogleScholarURL</li>
 												</ul>
 											</div>
 											<div class="tab-pane fade" id="work" role="tabpanel">
@@ -126,9 +125,9 @@
 											</div>
 											<div class="tab-pane fade" id="lang" role="tabpanel">
 												<ul class="basics">
-													<li>english</li>
-													<li>french</li>
-													<li>spanish</li>
+													<li>Voltage‐dependent anion channels: Key players in viral infection</li>
+													<li>Network motifs: simple building blocks of complex networks</li>
+													<li>The new frontier of genome engineering with CRISPR-Cas9</li>
 												</ul>
 											</div>
 										</div>
@@ -145,7 +144,7 @@
 										<a href="#" title=""><img src="images/resources/admin2.jpg" alt=""></a>
 									</figure>
 									<div class="page-meta">
-										<a href="https://scholar.google.com.eg/citations?hl=en&user=wejiWMcAAAAJ&view_op=list_works&sortby=pubdate" title="" class="underline">Researcher Profile</a>
+										<a href="https://scholar.google.com.eg/citations?hl=en&user=wejiWMcAAAAJ&view_op=list_works&sortby=pubdate" title="" class="underline" style="text-transform: capitalize">@Model.AuthenticatedUser.FirstName @Model.AuthenticatedUser.LastName Profile</a>
 									</div>
 									<div class="page-likes">
 										<ul class="nav nav-tabs likes-btn">
