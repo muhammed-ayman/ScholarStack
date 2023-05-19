@@ -1,3 +1,6 @@
+-- Drop the database
+DROP DATABASE IF EXISTS ScholarStack;
+
 -- Create the database
 CREATE DATABASE ScholarStack;
 
@@ -34,7 +37,7 @@ CREATE TABLE [User] (
   [profile_picture] NVARCHAR(500) ,
   [google_scholar_url] NVARCHAR(200) UNIQUE,
   [email] NVARCHAR(100) UNIQUE NOT NULL,
-  [password] NVARCHAR(50) NOT NULL,
+  [password] NVARCHAR(100) NOT NULL,
   [timestamp] DATETIME NOT NULL DEFAULT GETDATE(),
   FOREIGN KEY ([role]) REFERENCES Role (Id),
 );
@@ -192,4 +195,4 @@ INSERT INTO [Role] ([role_name]) VALUES ('admin');
 
 -- Insert Default User
 INSERT INTO [User] (first_name, last_name, username, role, google_scholar_url, email, password) 
-  VALUES ('Mohammed', 'Ayman', 'muhammed-ayman', 1, 'https://www.google.com', 'muhammed.ayman@outlook.com', '123456')
+  VALUES ('Mohammed', 'Ayman', 'muhammed-ayman', 1, 'https://www.google.com', 'muhammed.ayman@outlook.com', 'AQAAAAIAAYagAAAAEBcm91BI4UujXH9DVkyawi8VqIgUDg24LvmZzJjy8TdB34vLfKa3e5BKO/BHDqfFzA==')

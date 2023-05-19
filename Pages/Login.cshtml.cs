@@ -6,7 +6,7 @@ using ScholarStack.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-
+using Microsoft.AspNetCore.Identity;
 
 namespace ScholarStack.Pages
 {
@@ -14,6 +14,7 @@ namespace ScholarStack.Pages
     {
         private readonly ILogger<LoginModel> _logger;
         private readonly ScholarStackDBContext _dbContext;
+        private readonly PasswordHasher<User> _passwordHasher;
 
         [BindProperty(Name = "loginViewModel")]
         public LoginViewModel? loginViewModel { get; set; }
@@ -25,6 +26,7 @@ namespace ScholarStack.Pages
         {
             _dbContext = dbContext;
             _logger = logger;
+            _passwordHasher = new PasswordHasher<User>();
         }
 
         public void OnGet()
@@ -45,12 +47,15 @@ namespace ScholarStack.Pages
                 return Page();
             }
 
+            // Hash the password
+            string passwordHash = HashPassword(registerViewModel.Password);
+
             User newUser = new User
             {
                 FirstName = registerViewModel.FirstName,
                 LastName = registerViewModel.LastName,
                 Email = registerViewModel.Email,
-                Password = registerViewModel.Password,
+                Password = passwordHash,
                 Username = registerViewModel.Username,
                 GoogleScholarURL = registerViewModel.GoogleScholarURL,
                 UserRole = 1, // Ordinary user role
@@ -78,11 +83,11 @@ namespace ScholarStack.Pages
 
             // Validate user credentials against the database
             var user = _dbContext.User.FirstOrDefault(u =>
-                u.Username == loginViewModel.Username && u.Password == loginViewModel.Password);
+                u.Username == loginViewModel.Username);
 
-            if (user == null)
+            if (user == null || !VerifyPassword(loginViewModel.Password, user.Password))
             {
-                ModelState.AddModelError("InvalidLogin", "Invalid username or password");
+                ModelState.AddModelError("InvalidLogin", $"Invalid username or password");
                 return Page();
             }
 
@@ -91,6 +96,20 @@ namespace ScholarStack.Pages
             HttpContext.Session.SetString("UserName", user.Username);
 
             return RedirectToPage("Index");
+        }
+
+        private string HashPassword(string password)
+        {
+            // Hash the password
+            string hashedPassword = _passwordHasher.HashPassword(null, password);
+            return hashedPassword;
+        }
+
+        private bool VerifyPassword(string password, string passwordHash)
+        {
+            // Verify the password
+            var result = _passwordHasher.VerifyHashedPassword(null, passwordHash, password);
+            return result == PasswordVerificationResult.Success;
         }
     }
 }
