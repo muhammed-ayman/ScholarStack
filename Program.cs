@@ -35,6 +35,8 @@ app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
 app.UseSession();
 
+app.UseMiddleware<AuthenticationMiddleware>();
+
 app.UseRouting();
 
 app.UseAuthorization();
