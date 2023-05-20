@@ -1,0 +1,60 @@
+@page
+@using ScholarStack.Models
+@model ScholarStack.Pages.DashboardModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+@section Styles {
+	<link rel="stylesheet" type="text/css" href="/css/dashboard/dashboard.css" />
+}
+
+<section>
+	<div class="gap gray-bg">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="row" id="page-contents">
+						<div class="col-lg-3">
+							<partial name="Admin Dashboard/_admin-shortcuts" />
+						</div>
+						<div class="col-lg-6">
+							<div class="central-meta">
+								<div class="card">
+									<div class="card-header">
+										<h5 class="card-title">Statistics</h5>
+										</div>
+									<div class="card-body">
+										<ul class="list-group">
+										<li>
+											<i class="ti-clipboard"></i>
+											<a href="#" title="">Community Posts (@Model.Statistics.CommunityPostsCount)</a>
+										</li>
+										<li>
+											<i class="ti-clipboard"></i>
+											<a href="#" title="">Resource Posts (@Model.Statistics.ResourcePostsCount)</a>
+										</li>
+										<li>
+											<i class="ti-clipboard"></i>
+											<a href="#" title="">Registered Users (@Model.Statistics.RegisteredUsers)</a>
+										</li>
+										<li>
+											<i class="ti-clipboard"></i>
+											<a href="#" title="">Managers (@Model.Statistics.ManagersCount)</a>
+										</li>
+										<li>
+											<i class="ti-clipboard"></i>
+											<a href="#" title="">Promoted Posts (0)</a>
+										</li>
+									</ul>
+								</div><!-- Shortcuts -->
+								</div>
+								</div>
+								</div>
+						<div class="col-lg-3"></div><!-- sidebar -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+</section>
