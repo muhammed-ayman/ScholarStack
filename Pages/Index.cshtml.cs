@@ -116,7 +116,38 @@ namespace ScholarStack.Pages
                     User = p.User,
                     Attachment = p.Attachment
                 })
+                .AsEnumerable()
                 .ToList();
+            
+            foreach (var communityPost in CommunityPosts)
+            {
+                communityPost.Score = CalculateScore(communityPost); // Calculate the score for each community post
+            }
+
+            CommunityPosts = CommunityPosts
+                .OrderByDescending(p => p.Score) // Order the posts by score in descending order
+                .ToList();
+        }
+
+        private double CalculateScore(CommunityPost post)
+        {
+            const double upvoteWeight = 1.5; // Weight for upvotes
+            const double downvoteWeight = -0.5; // Weight for downvotes
+            const double timeWeight = 0.1; // Weight for time (adjust as needed)
+            const double timeDecayRate = 0.05; // Rate at which the time weight decreases (adjust as needed)
+
+            int upvotes = _dbContext.Vote.Count(v => v.CommunityPostID == post.ID && v.VoteType);
+            int downvotes = _dbContext.Vote.Count(v => v.CommunityPostID == post.ID && !v.VoteType);
+
+            TimeSpan timeSinceCreation = DateTime.UtcNow - post.TimeStamp;
+            
+            // Calculate the time weight using a logarithmic function
+            double timeWeightFactor = Math.Pow(Math.E, -timeDecayRate * timeSinceCreation.TotalHours);
+            
+            // Calculate the score using the updated scoring formula
+            double score = (upvotes * upvoteWeight) + (downvotes * downvoteWeight) + (timeWeight * timeWeightFactor);
+
+            return score;
         }
     }
 }

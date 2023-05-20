@@ -1,17 +1,27 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ScholarStack.Models
 {
-	public class Vote
-	{
-		[Column("user_id")]
-		public int UserID { get; set; }
+	[Table("Vote")]
+    public class Vote
+    {
+		[Key]
+        [Column("user_id")]
+        [ForeignKey("User")]
+        public int UserID { get; set; }
 
-		[Column("community_post_id")]
-		public int CommunityPostID { get; set; }
+		[Key]
+        [Column("community_post_id")]
+        [ForeignKey("CommunityPost")]
+        public int CommunityPostID { get; set; }
 
-		[Column("vote_type")]
-		public Boolean VoteType { get; set; }
-	}
+        [Column("vote_type")]
+        public bool VoteType { get; set; }
+
+        // Navigation properties
+        public User User { get; set; }
+        public CommunityPost CommunityPost { get; set; }
+    }
 }

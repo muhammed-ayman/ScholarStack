@@ -1,7 +1,11 @@
-﻿@{
+﻿@using System.Globalization;
+@{
 	@using ScholarStack.Models;
 	CommunityPost communityPost = ViewData["CommunityPost"] as CommunityPost;
 	string attachmentUrl = communityPost.Attachment != null ? communityPost.Attachment.URL : "default.png";
+
+	@* Post Creation Date *@
+	string formattedDate = communityPost.TimeStamp.ToString("MMMM d, yyyy h:mm tt", CultureInfo.InvariantCulture);
 }
 
 <div class="central-meta item">
@@ -12,7 +16,8 @@
 			</figure>
 			<div class="friend-name">
 				<ins><a href="#" title="">@communityPost.User.Username</a></ins>
-				<span>published: june,2 2018 19:PM</span>
+				<span>published: @formattedDate</span>
+				<span>score: @communityPost.Score</span>
 			</div>
 			<div class="post-meta">
 				<img src="images/post attachments/@attachmentUrl" alt="">

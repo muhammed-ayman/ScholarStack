@@ -24,6 +24,7 @@ namespace ScholarStack.Models
 
 		public CommunityPostAttachment? Attachment { get; set; }
 
-		// public ICollection<CommunityPostComment>? CommunityPostComments { get; set; }
+		[NotMapped]
+		public double Score { get; set; }
 	}
 }
