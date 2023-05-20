@@ -44,12 +44,12 @@
 							</p>
 							<form method="post" asp-page-handler="Login" asp-model="loginViewModel">
 								<div class="form-group">
-									<input type="text" id="input" asp-for="loginViewModel.Username"/>
+									<input type="text" id="input" asp-for="loginViewModel.Username" required="required"/>
 									<label class="control-label" for="input">Username</label><i class="mtrl-select"></i>
 									<span asp-validation-for="loginViewModel.Username" class="text-danger"></span>
 								</div>
 								<div class="form-group">
-									<input type="password" asp-for="loginViewModel.Password"/>
+									<input type="password" asp-for="loginViewModel.Password" required="required" />
 									<label class="control-label" for="input">Password</label><i class="mtrl-select"></i>
 									<span asp-validation-for="loginViewModel.Password" class="text-danger"></span>
 								</div>
