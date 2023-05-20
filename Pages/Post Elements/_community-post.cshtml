@@ -4,8 +4,11 @@
 	CommunityPost communityPost = ViewData["CommunityPost"] as CommunityPost;
 	string attachmentUrl = communityPost.Attachment != null ? communityPost.Attachment.URL : "default.png";
 
-	@* Post Creation Date *@
+	@* Post Meta-Data *@
 	string formattedDate = communityPost.TimeStamp.ToString("MMMM d, yyyy h:mm tt", CultureInfo.InvariantCulture);
+	int upvotes = communityPost.Votes.Count(v => v.VoteType);
+	int downvotes = communityPost.Votes.Count(v => !v.VoteType);
+	int commentCount = communityPost.Comments.Count;
 }
 
 <div class="central-meta item">
@@ -15,7 +18,7 @@
 				<img src="images/resources/friend-avatar10.jpg" alt="">
 			</figure>
 			<div class="friend-name">
-				<ins><a href="#" title="">@communityPost.User.Username</a></ins>
+				<ins><a href="/Profile/@communityPost.User.Username" title="">@communityPost.User.FirstName @communityPost.User.LastName (@@@communityPost.User.Username)</a></ins>
 				<span>published: @formattedDate</span>
 				<span>score: @communityPost.Score</span>
 			</div>
@@ -32,19 +35,19 @@
 						<li>
 							<span class="comment" data-toggle="tooltip" title="Comments">
 								<i class="fa fa-comments-o"></i>
-								<ins>52</ins>
+								<ins>@commentCount</ins>
 							</span>
 						</li>
 						<li>
 							<span class="like" data-toggle="tooltip" title="upvote">
 								<i class="fa fa-thumbs-up" aria-hidden="true"></i>
-								<ins>2.2k</ins>
+								<ins>@upvotes</ins>
 							</span>
 						</li>
 						<li>
 							<span class="dislike" data-toggle="tooltip" title="downvote">
 								<i class="fa fa-thumbs-down" aria-hidden="true"></i>
-								<ins>200</ins>
+								<ins>@downvotes</ins>
 							</span>
 						</li>
 						<li class="social-media">
