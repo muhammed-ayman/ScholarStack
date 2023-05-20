@@ -6,10 +6,6 @@ namespace ScholarStack.Models
     [Table("Vote")]
     public class Vote
     {
-        [Key]
-        [Column("id")]
-        public int ID { get; set; }
-
         [Column("user_id")]
         public int UserID { get; set; }
 

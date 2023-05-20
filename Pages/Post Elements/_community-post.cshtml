@@ -6,13 +6,13 @@
 
 	@* Post Meta-Data *@
 	string formattedDate = communityPost.TimeStamp.ToString("MMMM d, yyyy h:mm tt", CultureInfo.InvariantCulture);
-	int upvotes = communityPost.Votes.Count(v => v.VoteType);
-	int downvotes = communityPost.Votes.Count(v => !v.VoteType);
+	int upvotes = communityPost.Votes.Count(v => v.VoteType == true);
+	int downvotes = communityPost.Votes.Count(v => v.VoteType == false);
 	int commentCount = communityPost.Comments.Count;
 }
 
 <div class="central-meta item">
-	<div class="user-post">
+	<div class="user-post" data-post-id="@communityPost.ID">
 		<div class="friend-info">
 			<figure>
 				<img src="images/resources/friend-avatar10.jpg" alt="">
@@ -39,13 +39,13 @@
 							</span>
 						</li>
 						<li>
-							<span class="like" data-toggle="tooltip" title="upvote">
+							<span class="like" data-toggle="tooltip" title="upvote" class="upvote-btn">
 								<i class="fa fa-thumbs-up" aria-hidden="true"></i>
 								<ins>@upvotes</ins>
 							</span>
 						</li>
 						<li>
-							<span class="dislike" data-toggle="tooltip" title="downvote">
+							<span class="dislike" data-toggle="tooltip" title="downvote" class="downvote-btn">
 								<i class="fa fa-thumbs-down" aria-hidden="true"></i>
 								<ins>@downvotes</ins>
 							</span>

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ScholarStack.Models;
 using ScholarStack.Data;
+using ScholarStack.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,9 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true; // Ensure the session cookie is accessible only through HTTP
     options.Cookie.IsEssential = true; // Make the session cookie essential for authentication and authorization
 });
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<VoteService>();
 
 var app = builder.Build();
 
@@ -40,6 +44,12 @@ app.UseMiddleware<AuthenticationMiddleware>();
 app.UseRouting();
 
 app.UseAuthorization();
+
+// Map API routes
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers(); // Map all API controllers
+});
 
 app.MapRazorPages();
 

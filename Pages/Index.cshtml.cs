@@ -107,6 +107,7 @@ namespace ScholarStack.Pages
             CommunityPosts = _dbContext.CommunityPost
                 .Include(p => p.User)
                 .Include(p => p.Attachment)
+                .Include(p => p.Votes) // Eagerly load the associated votes
                 .Select(p => new CommunityPost
                 {
                     ID = p.ID,
@@ -114,11 +115,12 @@ namespace ScholarStack.Pages
                     TimeStamp = p.TimeStamp,
                     CreatorID = p.CreatorID,
                     User = p.User,
-                    Attachment = p.Attachment
+                    Attachment = p.Attachment,
+                    Votes = p.Votes // Assign the loaded votes to the Votes property
                 })
                 .AsEnumerable()
                 .ToList();
-            
+
             foreach (var communityPost in CommunityPosts)
             {
                 communityPost.Score = CalculateScore(communityPost); // Calculate the score for each community post
