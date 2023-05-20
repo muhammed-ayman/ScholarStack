@@ -24,3 +24,6 @@ ScholarStack.csproj.user
 **/packages/*
 *.nuget.props
 *.nuget.targets
+
+# Images
+wwwroot/images/post attachments/
