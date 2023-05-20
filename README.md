@@ -14,21 +14,21 @@ The following developers have worked on this project:
   <tbody>
         <tr>
         <td align="center">
-            <a href="https://kentcdodds.com">
+            <a href="https://github.com/muhammed-ayman">
                 <img src="https://avatars.githubusercontent.com/u/39387069?v=4" width="100px;" alt="Mohammed Ayman"/>
                 <br />
                 <sub><b>Mohammed Ayman</b></sub>
             </a>
             <br />
             <td align="center">
-            <a href="https://kentcdodds.com">
+            <a href="https://github.com/ahmedhesham47">
                 <img src="https://avatars.githubusercontent.com/u/44484663?v=4" width="100px;" alt="Ahmed Hesham"/>
                 <br />
                 <sub><b>Ahmed Hesham</b></sub>
             </a>
             <br />
             <td align="center">
-            <a href="https://kentcdodds.com">
+            <a href="https://github.com/MohzMagdy">
                 <img src="https://avatars.githubusercontent.com/u/96142444?v=4" width="100px;" alt="Mohammed Magdi"/>
                 <br />
                 <sub><b>Mohammed Magdi</b></sub>
