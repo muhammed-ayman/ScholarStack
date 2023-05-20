@@ -19,7 +19,9 @@ namespace ScholarStack.ViewModels
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Password is Required")]
-        [DataType(DataType.Password)]
+		[MinLength(6)]
+		[MaxLength(30)]
+		[DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Username is Required")]

@@ -20,7 +20,7 @@ namespace ScholarStack.Models
 		[UniqueEmail(ErrorMessage = "Email already exists")]
 		public string Email { get; set; }
 
-		[Required (ErrorMessage = "Password is Required"), PasswordPropertyText, Column("password")]
+		[Required (ErrorMessage = "Password is Required"), PasswordPropertyText, Column("password"), MinLength(6), MaxLength(30)]
 		public string Password { get; set; }
 
 		[Required (ErrorMessage = "Username is Required"), MinLength(5), MaxLength(100), Column("username")]
