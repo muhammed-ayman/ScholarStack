@@ -1,0 +1,12 @@
+#imagePreview {
+    text-align: center;
+    background-color: transparent;
+}
+
+#imagePreview img {
+    margin-top: 5%;
+    max-width: 80%;
+    max-height: 80%;
+    display: inline-block;
+    vertical-align: middle;
+}

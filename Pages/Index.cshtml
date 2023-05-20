@@ -5,6 +5,10 @@
 	ViewData["css_file_name"] = "index";
 }
 
+@section Styles {
+    <link rel="stylesheet" href="css/community-feed.css" />
+}
+
 <section>
 	<div class="gap gray-bg">
 		<div class="container-fluid">
@@ -44,7 +48,9 @@
 									</figure>
 									<div class="newpst-input">
 										<form method="post" enctype="multipart/form-data" asp-page-handler="CreatePost">
-											<textarea rows="2" placeholder="Share your groundbreaking discoveries with the world, @Model.AuthenticatedUser.FirstName!" asp-for="@Model.CreateCPostViewModel.Content"></textarea>
+											<div class="post-container">
+												<textarea rows="2" placeholder="Share your groundbreaking discoveries with the world, @Model.AuthenticatedUser.FirstName!" asp-for="@Model.CreateCPostViewModel.Content"></textarea>
+											</div>
 											<div class="attachments">
 												<ul>
 													@* <li>
@@ -56,7 +62,7 @@
 													<li>
 														<i class="fa fa-image"></i>
 														<label class="fileContainer">
-															<input type="file" accept="image/*" asp-for="@Model.CreateCPostViewModel.PostImageAttachment">
+															<input type="file" accept="image/*" onchange="previewImage(event)" asp-for="@Model.CreateCPostViewModel.PostImageAttachment">
 														</label>
 													</li>
 													@* <li>
@@ -81,6 +87,7 @@
 											</div>
 											<span asp-validation-for="@Model.CreateCPostViewModel.Content" class="text-danger"></span>
 										</form>
+										<div id="imagePreview"></div>
 									</div>
 								</div>
 							</div><!-- add post new box -->
@@ -129,3 +136,5 @@
 		</div>
 	</div>	
 </section>
+
+<script src="js/community-feed.js"></script>
