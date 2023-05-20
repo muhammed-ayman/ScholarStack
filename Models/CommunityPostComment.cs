@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ScholarStack.Models
 {
 	public class CommunityPostComment
 	{
+		[Key]
 		[Column("comment_id")]
 		public int CommentID { get; set; }
 
