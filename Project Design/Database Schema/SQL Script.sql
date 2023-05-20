@@ -87,7 +87,9 @@ CREATE TABLE [ResearchPaper] (
 CREATE TABLE [Comment] (
   [id] INT IDENTITY(1,1) PRIMARY KEY,
   [content] NVARCHAR(MAX) NOT NULL,
-  [timestamp] DATETIME NOT NULL DEFAULT GETDATE()
+  [timestamp] DATETIME NOT NULL DEFAULT GETDATE(),
+  [parent_comment_id] INT,
+  FOREIGN KEY ([parent_comment_id]) REFERENCES [Comment]([id])
 );
 
 -- Create Rating table
