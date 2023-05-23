@@ -21,6 +21,7 @@ builder.Services.AddSession(options =>
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<VoteService>();
+builder.Services.AddScoped<UserService>();
 
 var app = builder.Build();
 
