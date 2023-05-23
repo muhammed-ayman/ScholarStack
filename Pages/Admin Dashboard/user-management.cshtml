@@ -11,181 +11,141 @@
 
 <!DOCTYPE html>
 <html>
-<body>
-	<section>
-		<div class="gap gray-bg">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="row" id="page-contents">
-							<div class="col-lg-3">
-								<partial name="Admin Dashboard/_admin-shortcuts" />
-							</div>
-							<div class="col-lg-6">
-								<div class="central-meta">
-									<div class="container-fluid">
-										<div class="row">
-											<div class="col-md-12">
-												<h3>Users Management</h3>
+	<body>
+		<section>
+			<div class="gap gray-bg">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="row" id="page-contents">
+								<div class="col-lg-3">
+									<partial name="Admin Dashboard/_admin-shortcuts" />
+								</div>
+								<div class="col-lg-6">
+									<div class="central-meta">
+										<div class="container-fluid">
+											<div class="row">
+												<div class="col-md-12">
+													<h3>Users Management</h3>
+												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-12">
-												<div class="table-responsive">
-													<table class="table table-hover">
-														<thead>
-															<tr>
-																<th>Name</th>
-																<th>Email</th>
-																<th>Role</th>
-																<th>Actions</th>
-															</tr>
-														</thead>
-														<tbody>
-															@foreach (User user in Model.Users)
-															{
-																<tr data-user-id="@user.ID">
-																	<td>@user.FirstName @user.LastName</td>
-																	<td>@user.Email</td>
-																	<td>@user.Role.Name</td>
-																	<td>
-																		<button class="btn btn-danger" data-userid="@user.ID" data-toggle="modal" data-target="#deleteUserModal">
-																			<i class="fa fa-trash"></i> Delete
-																		</button>
-																		<button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#banUserModal">
-																			<i class="fa fa-ban"></i> Ban
-																		</button>
-																		<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#activateUserModal">
-																			<i class="fa fa-check"></i> Activate
-																		</button>
-																	</td>
+											<div class="row">
+												<div class="col-md-12">
+													<div class="table-responsive">
+														<table class="table table-hover">
+															<thead>
+																<tr>
+																	<th>Name</th>
+																	<th>Email</th>
+																	<th>Role</th>
+																	<th>Actions</th>
 																</tr>
-															}
-														</tbody>
-													</table>
+															</thead>
+															<tbody>
+																@foreach (User user in Model.Users)
+																{
+																	<tr data-user-id="@user.ID">
+																		<td>@user.FirstName @user.LastName</td>
+																		<td>@user.Email</td>
+																		<td>@user.Role.Name</td>
+																		<td>
+																			<button class="btn btn-danger delete-user">
+																				<i class="fa fa-trash"></i> Delete
+																			</button>
+																			<button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#banUserModal">
+																				<i class="fa fa-ban"></i> Ban
+																			</button>
+																			<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#activateUserModal">
+																				<i class="fa fa-check"></i> Activate
+																			</button>
+																		</td>
+																	</tr>
+																}
+															</tbody>
+														</table>
+													</div>
 												</div>
 											</div>
-										</div>
 
-										<!-- Delete User Modal -->
-										<div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="deleteUserModalLabel"
-											 aria-hidden="true">
-											<div class="modal-dialog modal-dialog-centered" role="document">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h5 class="modal-title" id="deleteUserModalLabel">Delete User</h5>
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-															<span aria-hidden="true">&times;</span>
-														</button>
-													</div>
-													<div class="modal-body">
-														Are you sure you want to delete this user?
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-														<button type="button" class="btn btn-danger" data-target="#banUserFunction">Delete</button>
+											<!-- Delete User Modal -->
+											<div class="modal fade delete-modal" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="deleteUserModalLabel"
+												 aria-hidden="true">
+												<div class="modal-dialog modal-dialog-centered" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="deleteUserModalLabel">Delete User</h5>
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															Are you sure you want to delete this user?
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-secondary modal-cancel" data-dismiss="modal">Cancel</button>
+															<button type="button" class="btn btn-danger delete-user-modal">Delete</button>
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
 
-										<!-- Ban User Modal -->
-										<div class="modal fade" id="banUserModal" tabindex="-1" role="dialog" aria-labelledby="banUserModalLabel"
-											 aria-hidden="true">
-											<div class="modal-dialog modal-dialog-centered" role="document">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h5 class="modal-title" id="banUserModalLabel">Ban User</h5>
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-															<span aria-hidden="true">&times;</span>
-														</button>
-													</div>
-													<div class="modal-body">
-														Are you sure you want to ban this user?
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-														<button type="button" class="btn btn-warning">Ban</button>
+											<!-- Ban User Modal -->
+											<div class="modal fade" id="banUserModal" tabindex="-1" role="dialog" aria-labelledby="banUserModalLabel"
+												 aria-hidden="true">
+												<div class="modal-dialog modal-dialog-centered" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="banUserModalLabel">Ban User</h5>
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															Are you sure you want to ban this user?
+														</div>
+														<div class="modal-footer">
+														<button type="button" class="btn btn-secondary modal-cancel" data-dismiss="modal">Cancel</button>
+															<button type="button" class="btn btn-warning">Ban</button>
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
 
-										<!-- Activate User Modal -->
-										<div class="modal fade" id="activateUserModal" tabindex="-1" role="dialog" aria-labelledby="activateUserModalLabel"
-											 aria-hidden="true">
-											<div class="modal-dialog modal-dialog-centered" role="document">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h5 class="modal-title" id="activateUserModalLabel">Activate User</h5>
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-															<span aria-hidden="true">&times;</span>
-														</button>
-													</div>
-													<div class="modal-body">
-														Are you sure you want to activate this user?
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-														<button type="button" class="btn btn-success">Activate</button>
+											<!-- Activate User Modal -->
+											<div class="modal fade" id="activateUserModal" tabindex="-1" role="dialog" aria-labelledby="activateUserModalLabel"
+												 aria-hidden="true">
+												<div class="modal-dialog modal-dialog-centered" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="activateUserModalLabel">Activate User</h5>
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															Are you sure you want to activate this user?
+														</div>
+														<div class="modal-footer">
+														<button type="button" class="btn btn-secondary modal-cancel" data-dismiss="modal">Cancel</button>
+															<button type="button" class="btn btn-success">Activate</button>
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-									</div><!-- User Management Box -->
-								</div><!-- centerl meta -->
+										</div><!-- User Management Box -->
+									</div><!-- centerl meta -->
+								</div>
+								<div class="col-lg-3"></div>
 							</div>
-							<div class="col-lg-3"></div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
 
-	<!-- Script for user management object -->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="/js/dashboard/user-manager.js"></script>
-
-	<script>
-		UserManagement userManagement = new UserManagement();
-
-		$('button[data-target="#deleteUserModal"]').click(function () {
-			const userId = $(this).closest('tr').data('userid');
-			$('#deleteUserModal').data('userid', userId);
-		});
-
-		$('button[data-target="#banUserModal"]').click(function () {
-			const userId = $(this).closest('tr').data('userid');
-			$('#banUserModal').data('userid', userId);
-		});
-
-		$('button[data-target="#activateUserModal"]').click(function () {
-			const userId = $(this).closest('tr').data('userid');
-			$('#activateUserModal').data('userid', userId);
-		});
-
-		$('button[data-target="#banUserFunction"]').click(function () {
-			const userId = $('#deleteUserModal').data('userid');
-			userManagement.deleteUser(userId)
-				.done(function () {
-					// Refresh the user list after deleting the user
-					location.reload();
-				})
-				.fail(function () {
-					alert('Failed to delete user');
-				});
-		});
-
-		$('#banUserModal button.btn-warning').click(function () {
-			const userId = $('#banUserModal').data('userid');
-			userManagement.banUser(userId);
-		});
-
-		$('#activateUserModal button.btn-success').click(function () {
-			const userId = $('#activateUserModal').data('userid');
-			userManagement.activateUser(userId);
-		});
-	</script>
-</body>
+	@section Scripts 
+	{
+		<script src="/js/dashboard/user-manager.js"></script>
+	}
+	</body>
 </html>

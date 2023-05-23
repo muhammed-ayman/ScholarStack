@@ -1,72 +1,41 @@
 ﻿$(document).ready(function () {
-
-    class UserManagement {
-        constructor() { }
-
-        // Code for deleting a user
-        deleteUser(userId) {
-            console.log("deleteUser called with userId:", userId);
-            $.ajax({
-                type: 'DELETE',
-                url: '/Admin Dashboard/User Management/delete-user?id=' + userId,
-                success: function () {
-                    $('#deleteUserModal').modal('hide');
-
-                    alert('User deleted successfully.');
-
-                    location.reload();
-                },
-                error: function () {
-                    alert('Failed to delete user.');
-                }
-            });
-        }
-
-        // Code for banning a user
-        banUser(userId) {
-            $.ajax({
-                type: 'POST',
-                url: '/admin/banuser/' + userId,
-                success: function () {
-                    $('#banUserModal').modal('hide');
-
-                    alert('User banned successfully.');
-
-                    location.reload();
-                },
-                error: function () {
-                    alert('Failed to ban user.');
-                }
-            });
-        }
-
-        // Code for activating a user
-        activateUser(userId) {
-            $.ajax({
-                type: 'POST',
-                url: '/admin/activateuser/' + userId,
-                success: function () {
-                    $('#activateUserModal').modal('hide');
-
-                    alert('User activated successfully.');
-                    location.reload();
-                },
-                error: function () {
-                    alert('Failed to activate user.');
-                }
-            });
-        }
-    }
-
+    var userId = -1;
     // Event handler for clicking the delete button
-    $('table tbody').on('click', 'button.btn-danger', function () {
-        const userId = $(this).closest('tr').data('userid');
-        $('#deleteUserModal').data('userid', userId);
+    $('table tbody').on('click', 'button.delete-user', function () {
+        userId = $(this).closest('tr').data('user-id');
+        console.log(userId);
         $('#deleteUserModal').modal('show');
 
-        $('#deleteUserButton').off('click').on('click', function () {
-            deleteUser(userId);
-        });
+    });
+
+    $('.delete-user-modal').on('click', function () {
+        var tempUserId = userId;
+        console.log(tempUserId);
+        // Perform the POST request to the server
+        $.post('/api/dashboard/delete-user', { user_id: tempUserId })
+            .done(function (data) {
+                // Handle the response from the server
+                console.log(data);
+                successfulDeletion();
+            })
+            .fail(function (error) {
+                console.log('Delete user request failed', error.responseText);
+                
+            });
+    });
+
+    function successfulDeletion() {
+        deletedUserEntry = $(`tr[data-user-id="${userId}"]`);
+        deletedUserEntry.remove();
+        $('#deleteUserModal').modal('hide');
+        alert('User deleted successfully!');
+    }
+
+    $(document).on('click', '.modal-cancel', function () {
+        // Get the parent modal element
+        var parentModal = $(this).closest('.modal');
+        // Hide the modal
+        parentModal.modal('hide');
     });
 
     // Event handler for clicking the ban button
