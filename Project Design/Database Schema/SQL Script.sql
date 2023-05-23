@@ -39,7 +39,8 @@ CREATE TABLE [User] (
   [email] NVARCHAR(100) UNIQUE NOT NULL,
   [password] NVARCHAR(100) NOT NULL,
   [timestamp] DATETIME NOT NULL DEFAULT GETDATE(),
-  FOREIGN KEY ([role]) REFERENCES Role (Id),
+  [is_banned] BIT NOT NULL DEFAULT 0,
+  FOREIGN KEY ([role]) REFERENCES Role (Id)
 );
 
 -- Create Community Post table
@@ -48,7 +49,7 @@ CREATE TABLE [CommunityPost] (
   [content] NVARCHAR(MAX) NOT NULL,
   [timestamp] DATETIME NOT NULL DEFAULT GETDATE(),
   [creator_id] INT NOT NULL,
-  FOREIGN KEY ([creator_id]) REFERENCES [User]([id])
+  FOREIGN KEY ([creator_id]) REFERENCES [User]([id]) ON DELETE CASCADE
 );
 
 -- Create Resource table
@@ -98,7 +99,7 @@ CREATE TABLE [Rating] (
   [user_id] INT NOT NULL,
   [value] INT NOT NULL,
   PRIMARY KEY ([resource_id], [user_id]),
-  FOREIGN KEY ([user_id]) REFERENCES [User]([id]),
+  FOREIGN KEY ([user_id]) REFERENCES [User]([id]) ON DELETE CASCADE,
   FOREIGN KEY ([resource_id]) REFERENCES [Resource]([id])
 );
 
@@ -108,7 +109,7 @@ CREATE TABLE [Vote] (
   [community_post_id] INT NOT NULL,
   [vote_type] BIT NOT NULL,
   PRIMARY KEY ([user_id], [community_post_id]),
-  FOREIGN KEY ([user_id]) REFERENCES [User]([id]),
+  FOREIGN KEY ([user_id]) REFERENCES [User]([id]) ON DELETE CASCADE,
   FOREIGN KEY ([community_post_id]) REFERENCES [CommunityPost]([id])
 );
 
@@ -118,7 +119,7 @@ CREATE TABLE [Ticket] (
   [content] NVARCHAR(MAX) NOT NULL,
   [timestamp] DATETIME NOT NULL DEFAULT GETDATE(),
   [user_id] INT NOT NULL,
-  FOREIGN KEY ([user_id]) REFERENCES [User]([id])
+  FOREIGN KEY ([user_id]) REFERENCES [User]([id]) ON DELETE CASCADE
 );
 
 -- Create CommunityPostComment table
@@ -128,7 +129,7 @@ CREATE TABLE [CommunityPostComment] (
   [community_post_id] INT NOT NULL,
   PRIMARY KEY ([comment_id]),
   FOREIGN KEY ([comment_id]) REFERENCES [Comment]([id]),
-  FOREIGN KEY ([user_id]) REFERENCES [User]([id]),
+  FOREIGN KEY ([user_id]) REFERENCES [User]([id]) ON DELETE CASCADE,
   FOREIGN KEY ([community_post_id]) REFERENCES [CommunityPost]([id])
 );
 
@@ -139,7 +140,7 @@ CREATE TABLE [ResourcePostComment] (
   [resource_post_id] INT NOT NULL,
   PRIMARY KEY ([comment_id]),
   FOREIGN KEY ([comment_id]) REFERENCES [Comment]([id]),
-  FOREIGN KEY ([user_id]) REFERENCES [User]([id]),
+  FOREIGN KEY ([user_id]) REFERENCES [User]([id]) ON DELETE CASCADE,
   FOREIGN KEY ([resource_post_id]) REFERENCES [ResourcePost]([id])
 );
 
@@ -186,7 +187,7 @@ CREATE TABLE [ResearchInterest] (
   [user_id] INT NOT NULL,
   [topic_id] INT NOT NULL,
   PRIMARY KEY ([user_id], [topic_id]),
-  FOREIGN KEY ([user_id]) REFERENCES [User]([id]),
+  FOREIGN KEY ([user_id]) REFERENCES [User]([id]) ON DELETE CASCADE,
   FOREIGN KEY ([topic_id]) REFERENCES [Topic]([id])
 );
 
@@ -197,4 +198,4 @@ INSERT INTO [Role] ([role_name]) VALUES ('admin');
 
 -- Insert Default User
 INSERT INTO [User] (first_name, last_name, username, role, google_scholar_url, email, password) 
-  VALUES ('Mohammed', 'Ayman', 'muhammed-ayman', 1, 'https://www.google.com', 'muhammed.ayman@outlook.com', 'AQAAAAIAAYagAAAAEBcm91BI4UujXH9DVkyawi8VqIgUDg24LvmZzJjy8TdB34vLfKa3e5BKO/BHDqfFzA==')
+  VALUES ('Mohammed', 'Ayman', 'muhammed-ayman', 1, 'https://www.google.com', 'ay.man@mohz.com', 'AQAAAAIAAYagAAAAEBcm91BI4UujXH9DVkyawi8VqIgUDg24LvmZzJjy8TdB34vLfKa3e5BKO/BHDqfFzA==')
