@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ScholarStack.Models
 {
@@ -7,7 +8,7 @@ namespace ScholarStack.Models
 		[Column("id")]
 		public int ID { get; set; }
 
-		[Column("privilege_name")]
+		[Required, Column("privilege_name")]
 		public string Name { get; set; }
 	}
 }
