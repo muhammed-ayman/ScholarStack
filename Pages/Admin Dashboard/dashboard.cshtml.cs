@@ -16,8 +16,8 @@ namespace ScholarStack.Pages
 
         public DashboardStatistics Statistics { get; set; }
 
-		[BindProperty(Name = "AddPriviligeViewModel")]
-		public AddPriviligeViewModel? AddPriviligeViewModel { get; set; }
+		// [BindProperty(Name = "AddPriviligeViewModel")]
+		// public AddPriviligeViewModel? AddPriviligeViewModel { get; set; }
 
 		public DashboardModel(ScholarStackDBContext dbContext)
         {
@@ -34,6 +34,7 @@ namespace ScholarStack.Pages
             Users = _dbContext.User.Include(u => u.Role).ToList();
 			Privileges = _dbContext.Privilege.Select(p => new Privilege
 			{
+                ID = p.ID,
 				privilege_name = p.privilege_name
 			})
 				.ToList();

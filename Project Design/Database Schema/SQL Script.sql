@@ -203,11 +203,8 @@ INSERT INTO [User] (first_name, last_name, username, role, google_scholar_url, e
   VALUES ('Mohmmed', 'Magdy', 'mohzz', 1, 'https://scholar.google.com/citations?hl=en&user=r2USopUAAAAJ&view_op=list_works&sortby=pubdate', 'mohz@mohz.com', 'AQAAAAIAAYagAAAAEJaZReAXvzI1Svsu2dDA0Vi9y0UA4IRZj3AkMY5NPMgN5nT8kmEo7ThWduWIJwtzKQ==')
   INSERT INTO [User] (first_name, last_name, username, role, google_scholar_url, email, password) 
   VALUES ('Ahmed', 'Hesham', 'KingH', 1, 'https://pubmed.ncbi.nlm.nih.gov/37170417/', 'ahmed@h.com', 'AQAAAAIAAYagAAAAEJaZReAXvzI1Svsu2dDA0Vi9y0UA4IRZj3AkMY5NPMgN5nT8kmEo7ThWduWIJwtzKQ==')
+
 -- Insert Default Priviliges
 INSERT INTO [Privilege] ([privilege_name]) VALUES ('add_user');
 INSERT INTO [Privilege] ([privilege_name]) VALUES ('delete_user');
 INSERT INTO [Privilege] ([privilege_name]) VALUES ('update_user');
-
--- Insert Default User
-INSERT INTO [User] (first_name, last_name, username, role, google_scholar_url, email, password) 
-  VALUES ('Mohammed', 'Ayman', 'muhammed-ayman', 1, 'https://www.google.com', 'ay.man@mohz.com', 'AQAAAAIAAYagAAAAEBcm91BI4UujXH9DVkyawi8VqIgUDg24LvmZzJjy8TdB34vLfKa3e5BKO/BHDqfFzA==')
