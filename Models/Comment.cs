@@ -11,6 +11,7 @@ namespace ScholarStack.Models
 		public string Content { get; set; }
 
 		[Column("timestamp")]
+		[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
 		public DateTime TimeStamp { get; set; }
 	}
 }

@@ -116,5 +116,54 @@ namespace ScholarStack.Controllers
             return Ok(response);
         }
 
+        [HttpPost("{postId}/add-comment")]
+        public IActionResult AddComment(int postId)
+        {
+            // Get the logged-in user ID from session
+            var userIdString = HttpContext.Session.GetString("UserId");
+            if (!int.TryParse(userIdString, out int userId))
+            {
+                // Unable to parse the user ID, return an unauthorized response
+                return Unauthorized(new { message = "Unauthorized: You're not authorized to access this endpoint!" });
+            }
+
+            // Retrieve the community post from the database
+            var communityPost = _dbContext.CommunityPost.Find(postId);
+
+            if (communityPost == null)
+            {
+                // Community post not found, return an appropriate response
+                return NotFound(new { message = "Community post not found." });
+            }
+
+            string commentText = Request.Form["comment_text"];
+
+            // Create a new comment
+            var comment = new Comment
+            {
+                Content = commentText,
+                TimeStamp = DateTime.Now
+            };
+
+            // Save the comment to the database
+            _dbContext.Comment.Add(comment);
+            _dbContext.SaveChanges();
+
+            // Create a new community post comment entry
+            var communityPostComment = new CommunityPostComment
+            {
+                UserID = userId,
+                CommunityPostID = postId,
+                Comment = comment
+            };
+
+            // Save the community post comment to the database
+            _dbContext.CommunityPostComment.Add(communityPostComment);
+            _dbContext.SaveChanges();
+
+            // Optionally, you can return the newly created comment as a response
+            return Ok(new { message = "Comment added successfully", comment });
+        }
+
     }
 }
