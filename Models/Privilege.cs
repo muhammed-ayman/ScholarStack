@@ -8,7 +8,7 @@ namespace ScholarStack.Models
 		[Column("id")]
 		public int ID { get; set; }
 
-		[Required, Column("privilege_name")]
-		public string Name { get; set; }
+		[Column("privilege_name")]
+		public string privilege_name { get; set; }
 	}
 }

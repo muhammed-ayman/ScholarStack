@@ -40,16 +40,18 @@
 															</tr>
 														</thead>
 														<tbody>
-															@foreach (User user in Model.Users)
-															{
-																<tr data-user-id="@user.ID">
-																	<td>@user.FirstName @user.LastName</td>
-																	<td>
-																		<button class="btn btn-danger" data-userid="@user.ID" data-toggle="modal">
-																			<i class="fa fa-trash"></i> Delete
-																		</button>
-																	</td>
-																</tr>
+															@{
+																foreach(Privilege privilege in Model.Privileges)
+																{
+																	<tr data-privilige-id="@privilege.ID">
+																		<td>@privilege.privilege_name</td>
+																		<td>
+																			<button class="btn btn-danger" data-toggle="modal">
+																				<i class="fa fa-trash"></i> Delete
+																			</button>
+																		</td>
+																	</tr>
+																}
 															}
 														</tbody>
 													</table>

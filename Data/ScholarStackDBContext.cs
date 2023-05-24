@@ -23,6 +23,7 @@ namespace ScholarStack.Data
 		public DbSet<Vote> Vote { get; set; }
 		public DbSet<ResourcePost> ResourcePost { get; set; }
 		public DbSet<CommunityPostAttachment> CommunityPostAttachment { get; set; }
+		public DbSet<Privilege> Privilege { get; set; }
 		// public DbSet<CommunityPostComment> CommunityPostComment { get; set; }
 	}
 }
