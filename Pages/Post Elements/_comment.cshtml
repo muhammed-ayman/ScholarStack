@@ -1,5 +1,17 @@
 ﻿@{
 	@using ScholarStack.Models;
+	@using ScholarStack.Data
+	@using Microsoft.EntityFrameworkCore;
+	@inject ScholarStackDBContext _dbContext
+
+	@* Retrieve Authenticated User *@
+	User authenticatedUser = null;
+    if (Context.Session.TryGetValue("UserName", out var userNameBytes))
+    {
+        string userName = System.Text.Encoding.UTF8.GetString(userNameBytes);
+        authenticatedUser = await _dbContext.User.FirstOrDefaultAsync(u => u.Username == userName);
+    }
+
 	CommunityPostComment comment = ViewData["comment"] as CommunityPostComment;
 }
 
@@ -11,8 +23,10 @@
 		<h5><a href="#" title="">@comment.User.Username</a></h5>
 		<span>@comment.Comment.TimeStamp</span>
 		<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-		<a class="we-reply" style="color: red;" href="#" title="Delete Comment" id="delete-comment"><i class="fa fa-trash"></i></a>
-		<a class="we-reply" style="color: rgb(128, 0, 0);" href="#" title="Ban User" id="ban-user"><i class="fa fa-ban"></i></a>
+		@if(authenticatedUser.UserRole != 1) {
+			<span class="we-reply delete-comment-btn" style="color: red;" data-comment-id="@comment.Comment.ID" title="Delete Comment"><i class="fa fa-trash"></i></span>
+            <span class="we-reply ban-user-btn" style="color: rgb(128, 0, 0);" data-user-id="@comment.User.ID" title="Ban User"><i class="fa fa-ban"></i></span>
+		}
 	</div>
 	<p>@comment.Comment.Content</p>
 </div>

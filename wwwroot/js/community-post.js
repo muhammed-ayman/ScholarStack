@@ -77,6 +77,52 @@ $(document).ready(function () {
         });
     }
 
+    // Function to handle deleting a comment
+    function deleteComment(postId, commentId) {
+        console.log(commentId);
+        $.ajax({
+            type: 'POST',
+            url: '/api/community-post/delete-comment',
+            data: { post_id: postId, comment_id: commentId },
+            success: function (response) {
+                // Handle the response from the server
+                console.log('Comment deleted successfully');
+                console.log(response);
+
+                // Remove the deleted comment from the page
+                var commentElement = $(`.user-post[data-post-id=${postId}] li[data-comment-id=${commentId}]`);
+                commentElement.remove();
+            },
+            error: function (error) {
+                console.log(error);
+                // Display an error message if the AJAX request fails
+                alert('An error occurred while deleting the comment. Please try again.');
+            }
+        });
+    }
+
+    // Function to handle banning a user
+    function banUser(userId) {
+        $.ajax({
+            type: 'POST',
+            url: '/api/dashboard/ban-user',
+            data: { user_id: userId },
+            success: function (response) {
+                // Handle the response from the server
+                alert('User banned successfully!');
+                console.log('User banned successfully');
+                console.log(response);
+
+                // Optionally, you can perform additional actions after banning the user
+                // For example, you can display a message or update the user's status on the page
+            },
+            error: function () {
+                // Display an error message if the AJAX request fails
+                alert('An error occurred while banning the user. Please try again.');
+            }
+        });
+    }
+
     // Get all the post elements
     const postElements = document.querySelectorAll('.user-post');
 
@@ -114,7 +160,7 @@ $(document).ready(function () {
                     console.log(data);
                     // Update the vote count
                     updateVoteCount(postId);
-                })
+                }).js
                 .fail(function () {
                     console.log('Downvote request failed');
                 });
@@ -129,6 +175,18 @@ $(document).ready(function () {
                 // Clear the comment text input
                 commentTextInput.value = '';
             }
+        });
+
+        // Event delegation for deleting a comment
+        $(postElement).on('click', '.delete-comment-btn', function () {
+            const commentId = $(this).data('comment-id');
+            deleteComment(postId, commentId);
+        });
+
+        // Event delegation for banning a user
+        $(postElement).on('click', '.ban-user-btn', function () {
+            const userId = $(this).data('user-id');
+            banUser(userId);
         });
     });
 });

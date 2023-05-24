@@ -173,5 +173,50 @@ namespace ScholarStack.Controllers
             return Ok(new { message = "Comment added successfully", comment, user });
         }
 
+        [HttpPost("delete-comment")]
+        public IActionResult DeleteComment()
+        {
+            // Get the logged-in user ID from session
+            var userIdString = HttpContext.Session.GetString("UserId");
+            if (!int.TryParse(userIdString, out int userId))
+            {
+                // Unable to parse the user ID, return an unauthorized response
+                return Unauthorized(new { message = "Unauthorized: You're not authorized to access this endpoint!" });
+            }
+
+            // Get the comment ID
+            int commentId;
+            if (!int.TryParse(Request.Form["comment_id"], out commentId))
+            {
+                // Unable to parse the comment ID, return a bad request response
+                return BadRequest(new { message = "Invalid comment ID!" });
+            }
+
+            // Retrieve the comments with the specified comment ID from the CommunityPostComment table
+            List<CommunityPostComment> commentsToDelete = _dbContext.CommunityPostComment
+                .Where(c => c.CommentID == commentId)
+                .ToList();
+
+            // Remove the comments from the CommunityPostComment table
+            _dbContext.CommunityPostComment.RemoveRange(commentsToDelete);
+            _dbContext.SaveChanges();
+
+            // Retrieve the comment from the Comment table
+            var comment = _dbContext.Comment.Find(commentId);
+            if (comment == null)
+            {
+                // Comment not found, return an appropriate response
+                return NotFound(new { message = "Comment not found." });
+            }
+
+            // Remove the comment from the Comment table
+            _dbContext.Comment.Remove(comment);
+            _dbContext.SaveChanges();
+
+            // Optionally, you can return a success message as a response
+            return Ok(new { message = "Comment deleted successfully!" });
+        }
+
+
     }
 }
