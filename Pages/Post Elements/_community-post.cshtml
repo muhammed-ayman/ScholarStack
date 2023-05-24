@@ -11,6 +11,10 @@
 	int commentCount = communityPost.Comments.Count;
 }
 
+<head>
+	<link rel="stylesheet" href="css/community-post.css">
+</head>
+
 <div class="central-meta item">
 	<div class="user-post" data-post-id="@communityPost.ID">
 		<div class="friend-info">
@@ -121,27 +125,10 @@
 						<img src="images/profile/admin.png" alt="">
 					</div>
 					<div class="post-comt-box">
-						<form method="post">
-							<textarea placeholder="Post your comment"></textarea>
-							<div class="add-smiles">
-								<span class="em em-expressionless" title="add icon"></span>
-							</div>
-							<div class="smiles-bunch">
-								<i class="em em---1"></i>
-								<i class="em em-smiley"></i>
-								<i class="em em-anguished"></i>
-								<i class="em em-laughing"></i>
-								<i class="em em-angry"></i>
-								<i class="em em-astonished"></i>
-								<i class="em em-blush"></i>
-								<i class="em em-disappointed"></i>
-								<i class="em em-worried"></i>
-								<i class="em em-kissing_heart"></i>
-								<i class="em em-rage"></i>
-								<i class="em em-stuck_out_tongue"></i>
-							</div>
-							<button type="submit"></button>
-						</form>
+						<textarea id="commentTextarea" class="comment-text-input" placeholder="Post your comment"></textarea>
+						<button id="commentButton" type="submit" class="btn btn-primary add-comment-btn">
+							<i class="fa fa-comment"></i>
+						</button>
 					</div>
 				</li>
 			</ul>
