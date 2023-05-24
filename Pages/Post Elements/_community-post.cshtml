@@ -102,17 +102,14 @@
 		<div class="coment-area">
 			<ul class="we-comet">
 				<li>
-					<ul>
-						@{
+					<ul class="comments-data">
+						@for (int j = 0; j < commentCount; j++)
+						{
 							<li>
-								@*{
-									int commentCount = communityPost.CommunityPostComments.Count();
-									for (int j = 0; j < commentCount; j++)
-									{
-										ViewData["comment"] = communityPost.CommunityPostComments.ElementAt(j);
-										<partial name="Post Elements/_comment" view-data="ViewData" />
-									}
-								}*@
+								@{
+									ViewData["comment"] = communityPost.Comments.ElementAt(j);
+									<partial name="Post Elements/_comment" view-data="ViewData" />
+								}
 							</li>
 						}
 					</ul>

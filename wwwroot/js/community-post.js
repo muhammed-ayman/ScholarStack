@@ -44,6 +44,30 @@ $(document).ready(function () {
 
                 // Update the vote count
                 updateVoteCount(postId);
+
+                // Add the new comment to the page
+                var user = response.user;
+                var comment = response.comment;
+                var commentHtml = `
+                    <li>
+                        <div class="comet-avatar">
+                            <img src="images/profile/admin.png" alt="">
+                        </div>
+                        <div class="we-comment">
+                            <div class="coment-head">
+                                <h5><a href="#" title="">${user.username}</a></h5>
+                                <span>${comment.timeStamp}</span>
+                                <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+                                <a class="we-reply" style="color: red;" href="#" title="Delete Comment" id="delete-comment"><i class="fa fa-trash"></i></a>
+                                <a class="we-reply" style="color: rgb(128, 0, 0);" href="#" title="Ban User" id="ban-user"><i class="fa fa-ban"></i></a>
+                            </div>
+                            <p>${comment.content}</p>
+                        </div>
+                    </li>`;
+
+                // Prepend the new comment to the comment list
+                var commentList = $(`.user-post[data-post-id=${postId}] ul.comments-data`);
+                commentList.append(commentHtml);
             },
             error: function () {
                 // Display an error message if the AJAX request fails

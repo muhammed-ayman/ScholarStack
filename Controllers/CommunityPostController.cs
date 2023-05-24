@@ -127,6 +127,14 @@ namespace ScholarStack.Controllers
                 return Unauthorized(new { message = "Unauthorized: You're not authorized to access this endpoint!" });
             }
 
+            // Retrieve the logged-in user from the database
+            var user = _dbContext.User.Find(userId);
+            if (user == null)
+            {
+                // User not found, return an appropriate response
+                return NotFound(new { message = "User not found." });
+            }
+
             // Retrieve the community post from the database
             var communityPost = _dbContext.CommunityPost.Find(postId);
 
@@ -162,7 +170,7 @@ namespace ScholarStack.Controllers
             _dbContext.SaveChanges();
 
             // Optionally, you can return the newly created comment as a response
-            return Ok(new { message = "Comment added successfully", comment });
+            return Ok(new { message = "Comment added successfully", comment, user });
         }
 
     }

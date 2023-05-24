@@ -116,7 +116,11 @@ namespace ScholarStack.Pages
                     CreatorID = p.CreatorID,
                     User = p.User,
                     Attachment = p.Attachment,
-                    Votes = p.Votes // Assign the loaded votes to the Votes property
+                    Votes = p.Votes, // Assign the loaded votes to the Votes property
+                    Comments = _dbContext.CommunityPostComment
+                        .Include(c => c.Comment)
+                        .Where(c => c.CommunityPostID == p.ID)
+                        .ToList()
                 })
                 .AsEnumerable()
                 .ToList();
@@ -130,6 +134,7 @@ namespace ScholarStack.Pages
                 .OrderByDescending(p => p.Score) // Order the posts by score in descending order
                 .ToList();
         }
+
 
         private double CalculateScore(CommunityPost post)
         {
