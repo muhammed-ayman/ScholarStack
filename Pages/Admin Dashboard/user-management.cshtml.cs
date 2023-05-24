@@ -25,17 +25,5 @@ namespace ScholarStack.Pages.Admin_Dashboard
 		{
 			Users = _dbContext.User.Include(u => u.Role).ToList();
 		}
-
-		public IActionResult OnPostDeleteUser(int id)
-		{
-			var user = _dbContext.User.Find(id);
-			if (user == null)
-			{
-				return NotFound();
-			}
-			_dbContext.User.Remove(user);
-			_dbContext.SaveChanges();
-			return new JsonResult("User deleted successfully");
-		}
 	}
 }

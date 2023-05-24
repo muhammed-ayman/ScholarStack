@@ -41,6 +41,9 @@ namespace ScholarStack.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime RegistrationDate { get; set; }
 
+		[Column("is_banned")]
+		public bool Is_banned { get; set; }
+
 		[ForeignKey("UserRole")]
         public Role? Role { get; set; }
 	}

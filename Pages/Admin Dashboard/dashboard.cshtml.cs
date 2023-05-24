@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using ScholarStack.ViewModels;
 
 namespace ScholarStack.Pages
 {
@@ -15,7 +16,10 @@ namespace ScholarStack.Pages
 
         public DashboardStatistics Statistics { get; set; }
 
-        public DashboardModel(ScholarStackDBContext dbContext)
+		[BindProperty(Name = "AddPriviligeViewModel")]
+		public AddPriviligeViewModel? AddPriviligeViewModel { get; set; }
+
+		public DashboardModel(ScholarStackDBContext dbContext)
         {
             _dbContext = dbContext;
             Statistics = new DashboardStatistics();
@@ -23,10 +27,17 @@ namespace ScholarStack.Pages
 
         public List<User> Users { get; set; }
 
-        public void OnGet()
+		public List<Privilege> Privileges { get; set; }
+
+		public void OnGet()
         {
             Users = _dbContext.User.Include(u => u.Role).ToList();
-            CalculateDashboardStatistics();
+			Privileges = _dbContext.Privilege.Select(p => new Privilege
+			{
+				privilege_name = p.privilege_name
+			})
+				.ToList();
+			CalculateDashboardStatistics();
         }
 
         private void CalculateDashboardStatistics()

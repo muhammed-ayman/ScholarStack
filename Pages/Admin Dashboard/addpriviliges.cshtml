@@ -1,0 +1,47 @@
+﻿@page
+@using ScholarStack.Models
+@model ScholarStack.Pages.DashboardModel
+@{
+	ViewData["Title"] = "Admin Dashboard";
+}
+
+@section Styles {
+	<link rel="stylesheet" type="text/css" href="/css/dashboard/dashboard.css" />
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+	<section>
+		<div class="gap gray-bg">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row" id="page-contents">
+							<div class="col-lg-3">
+								<partial name="Admin Dashboard/_admin-shortcuts" />
+							</div>
+							<div class="col-lg-6">
+								<div class="central-meta">
+									<div class="editing-info">
+										<h5 class="f-title"><i class="ti-lock"></i>Add Privilige</h5>
+
+										<form method="post">
+											<div class="form-group">
+												<input type="text" id="input" required="required" />
+												<label class="control-label" for="input">New privilige</label><i class="mtrl-select"></i>
+											</div>
+											<input type="submit" class="btn-success" value="Add New Privilige" />
+										</form>
+									</div>
+								</div>
+							</div><!-- centerl meta -->
+							<div class="col-lg-3"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
