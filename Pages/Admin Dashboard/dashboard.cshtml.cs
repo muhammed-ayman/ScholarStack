@@ -7,6 +7,7 @@ using System.Linq;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using ScholarStack.ViewModels;
+using System.ComponentModel.DataAnnotations;
 
 namespace ScholarStack.Pages
 {
@@ -40,6 +41,38 @@ namespace ScholarStack.Pages
 				.ToList();
 			CalculateDashboardStatistics();
         }
+
+        [HttpPost]
+		public IActionResult OnPostAddPrivilege()
+		{
+			var validationResults = new List<ValidationResult>();
+			var context = new ValidationContext(AddPriviligeViewModel);
+
+			// Manually perform validation
+			bool isValid = Validator.TryValidateObject(AddPriviligeViewModel, context, validationResults, true);
+
+			if (!isValid)
+			{
+				return Page();
+			}
+
+			/*	if (!ModelState.IsValid)
+				{
+					return Page();
+				}*/
+
+			Privilege newPrivilige = new Privilege
+			{
+				privilege_name = AddPriviligeViewModel.privilege_name
+			};
+
+			_dbContext.Privilege.Add(newPrivilige);
+			_dbContext.SaveChanges();
+
+			TempData["SuccessMessage"] = "Your privilege has been added successfully!";
+
+			return RedirectToPage("/Admin Dashboard/priviliges");
+		}
 
         private void CalculateDashboardStatistics()
         {
