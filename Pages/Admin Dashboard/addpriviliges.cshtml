@@ -1,5 +1,5 @@
-﻿@page
-@using ScholarStack.Models
+﻿@page "/Admin Dashboard/addpriviliges"
+@using ScholarStack.Models;
 @model ScholarStack.Pages.DashboardModel
 @{
 	ViewData["Title"] = "Admin Dashboard";
@@ -26,10 +26,11 @@
 									<div class="editing-info">
 										<h5 class="f-title"><i class="ti-lock"></i>Add Privilige</h5>
 
-										<form method="post">
+										<form method="post" asp-model="AddPriviligeViewModel" asp-page-handler="OnPost">
 											<div class="form-group">
-												<input type="text" id="input" required="required" />
+												<input type="text" id="input" required="required" asp-for="AddPriviligeViewModel.privilege_name" />
 												<label class="control-label" for="input">New privilige</label><i class="mtrl-select"></i>
+												<span asp-validation-for="AddPriviligeViewModel.privilege_name"></span>
 											</div>
 											<input type="submit" class="btn-success" value="Add New Privilige" />
 										</form>
