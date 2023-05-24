@@ -198,11 +198,11 @@ INSERT INTO [Role] ([role_name]) VALUES ('admin');
 
 -- Insert Default Users (Password: 111111)
 INSERT INTO [User] (first_name, last_name, username, role, google_scholar_url, email, password) 
-  VALUES ('Mohammed', 'Ayman', 'muhammed-ayman', 1, 'https://www.google.com', 'ayman@mohz.com', 'AQAAAAIAAYagAAAAEJaZReAXvzI1Svsu2dDA0Vi9y0UA4IRZj3AkMY5NPMgN5nT8kmEo7ThWduWIJwtzKQ==')
+  VALUES ('Mohammed', 'Ayman', 'muhammed-ayman', 3, 'https://www.google.com', 'ayman@mohz.com', 'AQAAAAIAAYagAAAAEJaZReAXvzI1Svsu2dDA0Vi9y0UA4IRZj3AkMY5NPMgN5nT8kmEo7ThWduWIJwtzKQ==')
   INSERT INTO [User] (first_name, last_name, username, role, google_scholar_url, email, password) 
-  VALUES ('Mohmmed', 'Magdy', 'mohzz', 1, 'https://scholar.google.com/citations?hl=en&user=r2USopUAAAAJ&view_op=list_works&sortby=pubdate', 'mohz@mohz.com', 'AQAAAAIAAYagAAAAEJaZReAXvzI1Svsu2dDA0Vi9y0UA4IRZj3AkMY5NPMgN5nT8kmEo7ThWduWIJwtzKQ==')
+  VALUES ('Mohmmed', 'Magdy', 'mohzz', 3, 'https://scholar.google.com/citations?hl=en&user=r2USopUAAAAJ&view_op=list_works&sortby=pubdate', 'mohz@mohz.com', 'AQAAAAIAAYagAAAAEJaZReAXvzI1Svsu2dDA0Vi9y0UA4IRZj3AkMY5NPMgN5nT8kmEo7ThWduWIJwtzKQ==')
   INSERT INTO [User] (first_name, last_name, username, role, google_scholar_url, email, password) 
-  VALUES ('Ahmed', 'Hesham', 'KingH', 1, 'https://pubmed.ncbi.nlm.nih.gov/37170417/', 'ahmed@h.com', 'AQAAAAIAAYagAAAAEJaZReAXvzI1Svsu2dDA0Vi9y0UA4IRZj3AkMY5NPMgN5nT8kmEo7ThWduWIJwtzKQ==')
+  VALUES ('Ahmed', 'Hesham', 'KingH', 3, 'https://pubmed.ncbi.nlm.nih.gov/37170417/', 'ahmed@h.com', 'AQAAAAIAAYagAAAAEJaZReAXvzI1Svsu2dDA0Vi9y0UA4IRZj3AkMY5NPMgN5nT8kmEo7ThWduWIJwtzKQ==')
 
 -- Insert Default Priviliges
 INSERT INTO [Privilege] ([privilege_name]) VALUES ('add_user');
