@@ -16,8 +16,8 @@ namespace ScholarStack.Pages
 
         public DashboardStatistics Statistics { get; set; }
 
-		// [BindProperty(Name = "AddPriviligeViewModel")]
-		// public AddPriviligeViewModel? AddPriviligeViewModel { get; set; }
+		[BindProperty(Name = "AddPriviligeViewModel")]
+		public AddPriviligeViewModel? AddPriviligeViewModel { get; set; }
 
 		public DashboardModel(ScholarStackDBContext dbContext)
         {
