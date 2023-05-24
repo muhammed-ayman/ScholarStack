@@ -149,7 +149,7 @@ CREATE TABLE [CommunityPostAttachment] (
   [id] INT IDENTITY(1,1) PRIMARY KEY,
   [url] NVARCHAR(500) NOT NULL UNIQUE,
   [community_post_id] INT NOT NULL,
-  FOREIGN KEY ([community_post_id]) REFERENCES [CommunityPost]([id])
+  FOREIGN KEY ([community_post_id]) REFERENCES [CommunityPost]([id]) ON DELETE CASCADE
 );
 
 -- Create Topic table
@@ -196,6 +196,10 @@ INSERT INTO [Role] ([role_name]) VALUES ('user');
 INSERT INTO [Role] ([role_name]) VALUES ('manager');
 INSERT INTO [Role] ([role_name]) VALUES ('admin');
 
--- Insert Default User
+-- Insert Default Users (Password: 111111)
 INSERT INTO [User] (first_name, last_name, username, role, google_scholar_url, email, password) 
-  VALUES ('Mohammed', 'Ayman', 'muhammed-ayman', 1, 'https://www.google.com', 'ay.man@mohz.com', 'AQAAAAIAAYagAAAAEBcm91BI4UujXH9DVkyawi8VqIgUDg24LvmZzJjy8TdB34vLfKa3e5BKO/BHDqfFzA==')
+  VALUES ('Mohammed', 'Ayman', 'muhammed-ayman', 1, 'https://www.google.com', 'ayman@mohz.com', 'AQAAAAIAAYagAAAAEJaZReAXvzI1Svsu2dDA0Vi9y0UA4IRZj3AkMY5NPMgN5nT8kmEo7ThWduWIJwtzKQ==')
+  INSERT INTO [User] (first_name, last_name, username, role, google_scholar_url, email, password) 
+  VALUES ('Mohmmed', 'Magdy', 'mohzz', 1, 'https://scholar.google.com/citations?hl=en&user=r2USopUAAAAJ&view_op=list_works&sortby=pubdate', 'mohz@mohz.com', 'AQAAAAIAAYagAAAAEJaZReAXvzI1Svsu2dDA0Vi9y0UA4IRZj3AkMY5NPMgN5nT8kmEo7ThWduWIJwtzKQ==')
+  INSERT INTO [User] (first_name, last_name, username, role, google_scholar_url, email, password) 
+  VALUES ('Ahmed', 'Hesham', 'KingH', 1, 'https://pubmed.ncbi.nlm.nih.gov/37170417/', 'ahmed@h.com', 'AQAAAAIAAYagAAAAEJaZReAXvzI1Svsu2dDA0Vi9y0UA4IRZj3AkMY5NPMgN5nT8kmEo7ThWduWIJwtzKQ==')
