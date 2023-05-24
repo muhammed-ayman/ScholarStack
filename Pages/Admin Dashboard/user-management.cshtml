@@ -44,20 +44,23 @@
 															<tbody>
 																@foreach (User user in Model.Users)
 																{
-																	<tr data-user-id="@user.ID">
+																	string style = "black";
+																	if (user.Is_banned) { style = "red"; }
+
+																	<tr data-user-id="@user.ID" style="color:@style">
 																		<td>@user.FirstName @user.LastName</td>
 																		<td>@user.Email</td>
 																		<td>@user.Role.Name</td>
 																		<td>
-																			<button class="btn btn-danger delete-user">
-																				<i class="fa fa-trash"></i> Delete
-																			</button>
-																			<button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#banUserModal">
-																				<i class="fa fa-ban"></i> Ban
-																			</button>
-																			<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#activateUserModal">
-																				<i class="fa fa-check"></i> Activate
-																			</button>
+																		<button class="btn btn-danger delete-user">
+																			<i class="fa fa-trash"></i> Delete
+																		</button>
+																		<button class="btn btn-warning btn-sm ban-user" data-toggle="modal" data-target="#banUserModal">
+																			<i class="fa fa-ban"></i> Ban
+																		</button>
+																		<button class="btn btn-success btn-sm activate-user" data-toggle="modal" data-target="#activateUserModal">
+																			<i class="fa fa-check"></i> Activate
+																		</button>
 																		</td>
 																	</tr>
 																}
@@ -90,7 +93,7 @@
 											</div>
 
 											<!-- Ban User Modal -->
-											<div class="modal fade" id="banUserModal" tabindex="-1" role="dialog" aria-labelledby="banUserModalLabel"
+											<div class="modal fade ban-modal" id="banUserModal" tabindex="-1" role="dialog" aria-labelledby="banUserModalLabel"
 												 aria-hidden="true">
 												<div class="modal-dialog modal-dialog-centered" role="document">
 													<div class="modal-content">
@@ -105,14 +108,14 @@
 														</div>
 														<div class="modal-footer">
 														<button type="button" class="btn btn-secondary modal-cancel" data-dismiss="modal">Cancel</button>
-															<button type="button" class="btn btn-warning">Ban</button>
+														<button type="button" class="btn btn-warning ban-user-modal">Ban</button>
 														</div>
 													</div>
 												</div>
 											</div>
 
 											<!-- Activate User Modal -->
-											<div class="modal fade" id="activateUserModal" tabindex="-1" role="dialog" aria-labelledby="activateUserModalLabel"
+											<div class="modal fade activate-modal" id="activateUserModal" tabindex="-1" role="dialog" aria-labelledby="activateUserModalLabel"
 												 aria-hidden="true">
 												<div class="modal-dialog modal-dialog-centered" role="document">
 													<div class="modal-content">
@@ -127,7 +130,7 @@
 														</div>
 														<div class="modal-footer">
 														<button type="button" class="btn btn-secondary modal-cancel" data-dismiss="modal">Cancel</button>
-															<button type="button" class="btn btn-success">Activate</button>
+														<button type="button" class="btn btn-success activate-user-modal">Activate</button>
 														</div>
 													</div>
 												</div>
