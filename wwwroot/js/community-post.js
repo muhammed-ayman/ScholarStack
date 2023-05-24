@@ -86,6 +86,7 @@ $(document).ready(function () {
             data: { post_id: postId, comment_id: commentId },
             success: function (response) {
                 // Handle the response from the server
+                alert('Comment deleted successfully!');
                 console.log('Comment deleted successfully');
                 console.log(response);
 
