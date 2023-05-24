@@ -92,6 +92,12 @@ namespace ScholarStack.Pages
                 return Page();
             }
 
+            if (user.Is_banned)
+            {
+                ModelState.AddModelError("InvalidLogin", $"Your account has been suspended");
+                return Page();
+            }
+
             // Store user information in session
             HttpContext.Session.SetString("UserId", user.ID.ToString());
             HttpContext.Session.SetString("UserName", user.Username);
