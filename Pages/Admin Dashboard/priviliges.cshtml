@@ -1,0 +1,73 @@
+﻿@page
+@using ScholarStack.Models
+@model ScholarStack.Pages.DashboardModel
+@{
+	ViewData["Title"] = "Admin Dashboard";
+}
+
+@section Styles {
+	<link rel="stylesheet" type="text/css" href="/css/dashboard/dashboard.css" />
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+	<section>
+		<div class="gap gray-bg">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row" id="page-contents">
+							<div class="col-lg-3">
+								<partial name="Admin Dashboard/_admin-shortcuts" />
+							</div>
+							<div class="col-lg-6">
+								<div class="central-meta">
+									<div class="container-fluid">
+										<div class="row">
+											<div class="col-md-12">
+												<h3>Priviliges</h3>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="table-responsive">
+													<table class="table table-hover">
+														<thead>
+															<tr>
+																<th>Privilige</th>
+																<th>Actions</th>
+															</tr>
+														</thead>
+														<tbody>
+															@foreach (User user in Model.Users)
+															{
+																<tr data-user-id="@user.ID">
+																	<td>@user.FirstName @user.LastName</td>
+																	<td>
+																		<button class="btn btn-danger" data-userid="@user.ID" data-toggle="modal">
+																			<i class="fa fa-trash"></i> Delete
+																		</button>
+																	</td>
+																</tr>
+															}
+														</tbody>
+													</table>
+													<button class="btn btn-success btn-sm btn-lg btn-block" style="font-weight: bold;" data-toggle="modal" onclick="location.href='addpriviliges'">
+														Add Privilige
+													</button>
+												</div>
+											</div>
+										</div>
+									</div><!-- User Management Box -->
+								</div><!-- centerl meta -->
+							</div>
+							<div class="col-lg-3"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
