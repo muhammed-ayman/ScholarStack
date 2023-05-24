@@ -67,7 +67,8 @@ $(document).ready(function () {
 
                 // Prepend the new comment to the comment list
                 var commentList = $(`.user-post[data-post-id=${postId}] ul.comments-data`);
-                commentList.append(commentHtml);
+                var secondToLastLi = commentList.find('li').eq(-2);
+                secondToLastLi.before(commentHtml);
             },
             error: function () {
                 // Display an error message if the AJAX request fails

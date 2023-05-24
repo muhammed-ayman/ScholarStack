@@ -100,20 +100,16 @@
 			</div>
 		</div>
 		<div class="coment-area">
-			<ul class="we-comet">
-				<li>
-					<ul class="comments-data">
-						@for (int j = 0; j < commentCount; j++)
-						{
-							<li>
-								@{
-									ViewData["comment"] = communityPost.Comments.ElementAt(j);
-									<partial name="Post Elements/_comment" view-data="ViewData" />
-								}
-							</li>
+			<ul class="we-comet comments-data">
+				@for (int j = 0; j < commentCount; j++)
+				{
+					<li>
+						@{
+							ViewData["comment"] = communityPost.Comments.ElementAt(j);
+							<partial name="Post Elements/_comment" view-data="ViewData" />
 						}
-					</ul>
-				</li>
+					</li>
+				}
 				<li>
 					<a href="#" title="" class="showmore underline">more comments</a>
 				</li>
